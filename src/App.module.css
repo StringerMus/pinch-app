@@ -1,11 +1,40 @@
 .App{
     font-family: "Tilt Warp", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings:
-      "XROT" 0,
-      "YROT" 0;
     background-color: white;
     min-height: 100vh;
+}
+
+.Main{
+  padding-top: 81px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: blue;
+  transition: color ease-in-out 0.3s;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:hover i {
+  color: rgb(255, 98, 145);;
+  transition: color ease-in-out 0.3s;
+}
+
+i {
+  color: white;
+  font-size: 1.6rem;
+  padding: 7px;
+  vertical-align: middle;
+}
+
+i:hover {
+  cursor: pointer;
+  transition: color ease-in-out 0.3s;
+  color: #2142b2;
 }
