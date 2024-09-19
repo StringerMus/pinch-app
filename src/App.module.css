@@ -42,10 +42,11 @@ a {
 
 a:hover {
   text-decoration: none;
+  color: rgb(3, 216, 205);
 }
 
 a:hover i {
-  color: rgb(255, 98, 145);;
+  color: rgb(3, 216, 205);
   transition: color ease-in-out 0.3s;
 }
 
@@ -64,7 +65,7 @@ i {
 i:hover {
   cursor: pointer;
   transition: color ease-in-out 0.3s;
-  color: red;
+  color: yellow;
 }
 
 /*new*/

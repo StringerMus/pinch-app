@@ -16,15 +16,15 @@
   }
   
   .Button:hover:active {
-    background-color: pink !important;
+    background-color: rgb(0, 87, 75)!important;
   }
   
   .Button:active {
-    background-color: pink !important;
+    background-color: rgb(0, 87, 75)!important;
   }
   
   .Button:focus {
-    background-color: pink;
+    background-color: rgb(0, 87, 75);
   }
   
   .Wide {
@@ -35,7 +35,7 @@
   .Blue,
   .BlueOutline:hover,
   .Bright:hover {
-    background-color: pink;
+    background-color: rgb(0, 87, 75);
     color: #ffffff;
   }
   
@@ -43,7 +43,7 @@
   .Blue:hover {
     /* border: 1px solid #2142b2; */
     background-color: #ffffff;
-    color: pink;
+    color: rgb(0, 87, 75);;
   }
   
   .Black,
@@ -64,6 +64,6 @@
   }
   
   .Bright {
-    background-color: pink;
+    background-color: rgb(0, 87, 75);;
     color: white;
   }

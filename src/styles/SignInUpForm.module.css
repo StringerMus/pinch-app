@@ -21,7 +21,7 @@
     text-align: center;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #2142b2;
+    color: rgb(0, 87, 75);
   }
   
   .Link {
@@ -29,10 +29,11 @@
     text-align: center;
     display: block;
     margin: auto;
+    color: black;
   }
   
   .Link span {
-    color: #ff9254;
+    color: rgb(255, 94, 120);
   }
   
   .Container {
