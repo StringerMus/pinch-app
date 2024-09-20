@@ -58,7 +58,7 @@ const SignUpForm = () => {
               <Form.Control
                 className={styles.Input}
                 type="text"
-                placeholder="Username"
+                placeholder="Create a username"
                 name="username"
                 value={username}
                 onChange={handleChange}
@@ -75,7 +75,7 @@ const SignUpForm = () => {
               <Form.Control
                 className={styles.Input}
                 type="password"
-                placeholder="Password"
+                placeholder="Create a password"
                 name="password1"
                 value={password1}
                 onChange={handleChange}
@@ -92,7 +92,7 @@ const SignUpForm = () => {
               <Form.Control
                 className={styles.Input}
                 type="password"
-                placeholder="Confirm password"
+                placeholder="Confirm your password"
                 name="password2"
                 value={password2}
                 onChange={handleChange}
