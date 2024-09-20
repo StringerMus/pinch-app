@@ -34,7 +34,7 @@ function SignInForm() {
 
     try {
       const {data} = await axios.post("/dj-rest-auth/login/", signInData);
-      console.log(data); // Log the full response object to inspect the structure
+      console.log(data.user); // Log the full response object to inspect the structure
       setCurrentUser(data.user) // Assuming there's a 'user' field in the respon
       history.push("/");
     } catch (err) {
