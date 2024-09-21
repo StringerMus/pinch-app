@@ -32,16 +32,23 @@
     width: 100%;
   }
   
+  /*Chage name to green*/
   .Blue,
   .BlueOutline:hover,
   .Bright:hover {
     background-color: rgb(0, 87, 75);
     color: #ffffff;
   }
+
+  .Pink,
+  .PinkOutline:hover,
+  .Bright:hover {
+    background-color: rgb(255, 94, 120);
+    color: #ffffff;
+  }
   
   .BlueOutline,
   .Blue:hover {
-    /* border: 1px solid #2142b2; */
     background-color: #ffffff;
     color: rgb(0, 87, 75);;
   }
