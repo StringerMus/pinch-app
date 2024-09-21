@@ -2,7 +2,10 @@ import React from 'react';
 import { Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
+import {
+  useCurrentUser,
+  useSetCurrentUser
+} from '../contexts/CurrentUserContext';
 import Avatar from "./Avatar";
 import axios from 'axios';
 
@@ -21,9 +24,9 @@ const NavBar = () => {
 
   const addPostIcon = (
     <NavLink
-      to="/listings/create"
-      className="NavLink"
+      className={styles.NavLink}
       activeClassName={styles.Active}
+      to="/posts/create"
     >
       <i className="fa-regular fa-square-plus"></i> List item
     </NavLink>
@@ -37,11 +40,8 @@ const NavBar = () => {
     >
       <i className="fa-solid fa-heart"></i>Liked
     </NavLink>
-    <NavLink
-      to="/" onClick={handleSignOut}
-      className={styles.NavLink}
-    >
-      <i className="fa-solid fa-right-from-bracket"></i>Sign out
+    <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+      <i className="fas fa-sign-out-alt"></i>Sign out
     </NavLink>
     <NavLink
       className={styles.NavLink}
@@ -80,6 +80,7 @@ const NavBar = () => {
             <h2>Pinch</h2>
           </Navbar.Brand>
         </NavLink>
+
         {/* create a lisitng */}
         {currentUser && addPostIcon}
 
