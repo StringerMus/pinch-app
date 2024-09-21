@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 import Form from "react-bootstrap/Form";
@@ -14,10 +14,10 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import { SetCurrentUserContext } from "../../App";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 function SignInForm() {
-  const setCurrentUser = useContext(SetCurrentUserContext);
+  const setCurrentUser = useSetCurrentUser();
 
 
   const [signInData, setSignInData] = useState({
@@ -35,7 +35,8 @@ function SignInForm() {
     try {
       const {data} = await axios.post("/dj-rest-auth/login/", signInData);
       console.log(data.user); // Log the full response object to inspect the structure
-      setCurrentUser(data.user) // Assuming there's a 'user' field in the respon
+      console.log("data = ",data) // console.log
+      setCurrentUser(data.user)
       history.push("/");
     } catch (err) {
         setErrors(err.response?.data);
