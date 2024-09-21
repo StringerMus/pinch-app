@@ -79,8 +79,7 @@ function PostCreateForm() {
   const textFields = (
     <div className="text-center">
 
-    <Form onSubmit={handleSubmit}>
-      <Form.Group>
+    <Form.Group>
       <Form.Label className="d-none">Item Name</Form.Label>
       <Form.Control
           type="text"
@@ -89,7 +88,7 @@ function PostCreateForm() {
           value={item_name}
           onChange={handleChange}
         />
-        </Form.Group>
+    </Form.Group>
         {errors.item_name?.map((message, idx) => (
           <Alert key={idx} variant="warning">
             {message}
@@ -119,7 +118,6 @@ function PostCreateForm() {
         <Form.Control
           as="select"
           name="category"
-          defaultValue="OTHER"
           value={category}
           onChange={handleChange}
         >
@@ -157,38 +155,37 @@ function PostCreateForm() {
         ))}
 
         <Form.Row>
-            <Form.Group as={Col}>
-              <Form.Label className="d-none">Location</Form.Label>
-              <Form.Control
-                placeholder="Town/city "
-                type ="text"
-                name="location"
-                value={location}
-                onChange={handleChange}/>
-            </Form.Group>
-            {errors.location?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
+          <Form.Group as={Col}>
+            <Form.Label className="d-none">Location</Form.Label>
+            <Form.Control
+              placeholder="Town/city "
+              type ="text"
+              name="location"
+              value={location}
+              onChange={handleChange}/>
+          </Form.Group>
+          {errors.location?.map((message, idx) => (
+            <Alert key={idx} variant="warning">
+              {message}
+            </Alert>
+          ))}
 
-            <Form.Group as={Col}>
-              <Form.Label className="d-none">Contact Email</Form.Label>
-              <Form.Control
-                  type="email"
-                  placeholder="Contact email"
-                  name="contact_email"
-                  value={contact_email}
-                  onChange={handleChange}
-                />
-            </Form.Group>
-            {errors.contact_email?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-        ))}
+          <Form.Group as={Col}>
+            <Form.Label className="d-none">Contact Email</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Contact email"
+              name="contact_email"
+              value={contact_email}
+              onChange={handleChange}
+            />
+          </Form.Group>
         </Form.Row>
-    </Form>
+        {errors.contact_email?.map((message, idx) => (
+          <Alert key={idx} variant="warning">
+            {message}
+          </Alert>
+        ))}
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
@@ -203,7 +200,7 @@ function PostCreateForm() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
