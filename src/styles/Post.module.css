@@ -1,25 +1,46 @@
 .Post {
-    background-color: rgb(0, 87, 75);
-    border: 0px solid rgb(0, 87, 75);
+    background-color: white;
+    border: 2px solid rgb(241, 241, 241);
     border-radius: 2px;
     margin-bottom: 16px;
-    text-align: center;
+    color: black;
   }
-  
+
   .Post figure,
   h5 {
     margin: 0 0;
   }
-  
+
   .Heart {
     color: #ff004c;
   }
-  
-  .Heart:hover {
-    color: rgb(255, 204, 204);
-    /*green hover color: rgb(3, 216, 205);*/
-  }
-  
-  .HeartOutline:hover {
-    color: rgb(255, 94, 120);
-  }
+
+.Post_head {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.Post_sub {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.Post_text {
+  font-size: 14px;
+}
+
+.Post_cat {
+  font-size: 14px;
+  color: rgb(175, 175, 175);
+  text-transform: capitalize;
+}
+
+.Profile {
+  margin-right: 20px;
+}
+
+.Post i {
+  color:rgb(0, 87, 75);
+  font-size: 1.3rem;
+  padding: 10px;
+}

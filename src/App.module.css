@@ -11,22 +11,19 @@
   padding-top: 81px;
 }
 
-/*new*/
 .Content {
   background-color: #ffffff;
   padding: 10px;
   border-radius: 2px;
-  border: 2px solid rgb(255, 180, 193);
+  border: 2px solid rgb(243, 243, 243);
 }
 
-/*new*/
 .FillerImage {
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
 
-/*new*/
 .Image {
   max-height: 40vh;
   max-width: 100%;
@@ -44,15 +41,14 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: rgb(3, 216, 205);
+  color: rgb(255, 94, 120);
 }
 
 a:hover i {
-  color: rgb(3, 216, 205);
+  color: rgb(255, 94, 120);
   transition: color ease-in-out 0.3s;
 }
 
-/*new*/
 input[type="file"] {
   display: none;
 }
@@ -70,7 +66,6 @@ i:hover {
   color: rgb(3, 216, 205);
 }
 
-/*new*/
 figure {
   text-align: center;
   display: inline-block;
