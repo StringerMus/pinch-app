@@ -30,7 +30,6 @@ const Post = (props) => {
 
   return (
     <Card className={styles.Post}>
-        
         <Card.Body>
             <Media className="align-items-center justify-content-between" >
                 <Link to={`/profiles/${profile_id}`}>
@@ -42,17 +41,23 @@ const Post = (props) => {
                     {is_owner && postPage && "..."}
                 </div>
             </Media>
+
         </Card.Body>
+        
         <Link to={`/listings/${id}`}>
             <Card.Img src={image} alt={item_name} />
         </Link>
         <Card.Body>
             {item_name && <Card.Title className='text-center'>{item_name}</Card.Title>}
             {description && <Card.Title className='text-center'>{description}</Card.Title>}
+            {description && <Card.Title className='text-center'>{category}</Card.Title>}
+            {description && <Card.Title className='text-center'>{price}</Card.Title>}
+            {description && <Card.Title className='text-center'>{location}</Card.Title>}
+            {description && <Card.Title className='text-center'>{contact_email}</Card.Title>}
             <div className={styles.PostBar}>
                 {is_owner ? (
                     <OverlayTrigger placement='top' overlay={<Tooltip>Unable to like own listing</Tooltip>}>
-                        <i className='far fa-heart' />
+                        <i className='fa-solid fa-heart' />
                     </OverlayTrigger>
                 ) : like_id ? (
                     <span onClick={()=>{}}>
@@ -60,11 +65,11 @@ const Post = (props) => {
                     </span>
                 ) : currentUser ? (
                     <span onClick={()=>{}}>
-                        <i className={`fas fa-heart ${styles.HeartOutline}`} />
+                        <i className={`fa-solid fa-heart ${styles.HeartOutline}`} />
                     </span>
                 ) : (
                     <OverlayTrigger placement='top' overlay={<Tooltip>You need to log in</Tooltip>}>
-                        <i className='fas fa-heart' />
+                        <i className='fa-solid fa-heart' />
                     </OverlayTrigger>
                 )}
                 {likes_count}

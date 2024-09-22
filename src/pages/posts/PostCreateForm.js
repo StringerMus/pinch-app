@@ -121,13 +121,13 @@ function PostCreateForm() {
           value={category}
           onChange={handleChange}
         >
-          <option>DIY</option>
-          <option>GARDENING</option>
-          <option>GADGETS</option>
-          <option>CAMERA</option>
-          <option>SPORTS</option>
-          <option>WEDDING</option>
-          <option>OTHER</option>
+          <option>diy</option>
+          <option>gardening</option>
+          <option>gadgets</option>
+          <option>camera</option>
+          <option>sports</option>
+          <option>wedding</option>
+          <option>other</option>
         </Form.Control>
         </Form.Group>
         {errors.category?.map((message, idx) => (
