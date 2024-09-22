@@ -16,7 +16,7 @@
   background-color: #ffffff;
   padding: 10px;
   border-radius: 2px;
-  border: 2px solid rgb(255, 180, 192);
+  border: 2px solid rgb(255, 180, 193);
 }
 
 /*new*/
@@ -67,7 +67,7 @@ i {
 i:hover {
   cursor: pointer;
   transition: color ease-in-out 0.3s;
-  color: yellow;
+  color: rgb(3, 216, 205);
 }
 
 /*new*/

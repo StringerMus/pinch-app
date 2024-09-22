@@ -32,7 +32,7 @@ const Post = (props) => {
     <Card className={styles.Post}>
         
         <Card.Body>
-            <Media className="align-items-center justify-content-between">
+            <Media className="align-items-center justify-content-between" >
                 <Link to={`/profiles/${profile_id}`}>
                     <Avatar src={profile_image} height={55} />
                     {owner}
@@ -56,9 +56,9 @@ const Post = (props) => {
                     </OverlayTrigger>
                 ) : like_id ? (
                     <span onClick={()=>{}}>
-                        <i className={`fas fa-heart ${styles.Heart}`} />
+                        <i className={`fa-solid fa-heart ${styles.Heart}`} />
                     </span>
-                ) : currentuser ? (
+                ) : currentUser ? (
                     <span onClick={()=>{}}>
                         <i className={`fas fa-heart ${styles.HeartOutline}`} />
                     </span>
@@ -66,7 +66,12 @@ const Post = (props) => {
                     <OverlayTrigger placement='top' overlay={<Tooltip>You need to log in</Tooltip>}>
                         <i className='fas fa-heart' />
                     </OverlayTrigger>
-                )};
+                )}
+                {likes_count}
+                <Link to={`/lisitngs/${id}`}>
+                    <i className='fa-regular fa-message' />
+                </Link>
+                {comments_count}
             </div>
         </Card.Body>
     </Card>
