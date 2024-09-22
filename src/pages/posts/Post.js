@@ -4,6 +4,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Container, Media, OverlayTrigger, Tooltip, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import { axiosRes } from '../../api/axiosDefaults';
 
 const Post = (props) => {
     const {
@@ -23,10 +24,43 @@ const Post = (props) => {
         image,
         updated_at,
         postPage,
+        setPosts
     } = props;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
+
+    const handleLike = async () => {
+        try {
+            const {data} = await axiosRes.post('/likes/', {post:id});
+            setPosts((prevPosts) => ({
+                ...prevPosts,
+                results: prevPosts.results.map((post) => {
+                    return post.id === id
+                    ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
+                    :post;
+                }),
+            }));
+        } catch(err) {
+            console.log(err);
+        }
+    };
+
+    const handleUnlike = async () => {
+        try {
+          await axiosRes.delete(`/likes/${like_id}/`);
+          setPosts((prevPosts) => ({
+            ...prevPosts,
+            results: prevPosts.results.map((post) => {
+              return post.id === id
+                ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+                : post;
+            }),
+          }));
+        } catch (err) {
+          console.log(err);
+        }
+      };
 
   return (
         <Card className={styles.Post}>
@@ -41,15 +75,15 @@ const Post = (props) => {
                                 <i className='fa-solid fa-heart' />
                             </OverlayTrigger>
                         ) : like_id ? (
-                            <span onClick={()=>{}}>
+                            <span onClick={handleUnlike}>
                                 <i className={`fa-solid fa-heart ${styles.Heart}`} />
                             </span>
                         ) : currentUser ? (
-                            <span onClick={()=>{}}>
+                            <span onClick={handleLike}>
                                 <i className={`fa-solid fa-heart ${styles.HeartOutline}`} />
                             </span>
                         ) : (
-                            <OverlayTrigger placement='top' overlay={<Tooltip>You need to log in</Tooltip>}>
+                            <OverlayTrigger placement='top' overlay={<Tooltip>You need to log in to like</Tooltip>}>
                                 <i className='fa-solid fa-heart' />
                             </OverlayTrigger>
                         )}
