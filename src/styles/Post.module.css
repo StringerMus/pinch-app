@@ -12,7 +12,15 @@
   }
 
   .Heart {
-    color: #ff004c;
+    color: #f85032;
+  }
+  
+  .Heart:hover {
+    color: rgb(3, 216, 205);
+  }
+  
+  .HeartOutline:hover {
+    color: rgb(3, 216, 205);
   }
 
 .Post_head {

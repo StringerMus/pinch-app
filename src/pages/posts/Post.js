@@ -65,7 +65,7 @@ const Post = (props) => {
   return (
         <Card className={styles.Post}>
             <Row>
-                <Col md={6} xs={12} className={styles.Post_i}>
+                <Col md={6} xs={12}>
                     <Link to={`/listings/${id}`}>
                         <Card.Img src={image} alt={item_name} />
                     </Link>
