@@ -1,7 +1,9 @@
 /*need to choose a font for the app*/
 .App{
-    font-family: "Tilt Warp", sans-serif;
-    background-color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    background-color: rgb(255, 252, 252);
     min-height: 100vh;
 }
 
@@ -14,7 +16,7 @@
   background-color: #ffffff;
   padding: 10px;
   border-radius: 2px;
-  border: 1px solid #dadadf;
+  border: 2px solid rgb(255, 180, 192);
 }
 
 /*new*/

@@ -1,0 +1,25 @@
+.Post {
+    background-color: rgb(255, 222, 222);
+    border: 2px solid rgb(255, 180, 192);
+    border-radius: 2px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .Post figure,
+  h5 {
+    margin: 0 0;
+  }
+  
+  .Heart {
+    color: #ff004c;
+  }
+  
+  .Heart:hover {
+    color: rgb(255, 204, 204);
+    /*green hover color: rgb(3, 216, 205);*/
+  }
+  
+  .HeartOutline:hover {
+    color: rgb(255, 94, 120);
+  }

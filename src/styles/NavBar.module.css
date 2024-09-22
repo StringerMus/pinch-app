@@ -1,12 +1,17 @@
+.Logo {
+    font-family: "Tilt Warp", sans-serif;
+    color: white;
+}
+
 .NavBar {
     background-color: rgb(0, 87, 75);
     border-bottom: 4px solid rgb(255, 186, 186);
     color: white;
 }
 .NavLink {
-    padding: 5px;
+    padding: 10px;
 }
 
-.Active i {
+.Active i, .Active {
     color: rgb(255, 186, 186);
 }

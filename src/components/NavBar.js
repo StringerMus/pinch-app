@@ -6,7 +6,7 @@ import {
   useCurrentUser,
   useSetCurrentUser
 } from '../contexts/CurrentUserContext';
-import Avatar from "./Avatar";
+import Avatar from './Avatar';
 import axios from 'axios';
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
@@ -81,7 +81,7 @@ const NavBar = () => {
       <Container>
 
         <NavLink to="/">
-          <Navbar.Brand>
+          <Navbar.Brand className={styles.Logo}>
             <h2>Pinch</h2>
           </Navbar.Brand>
         </NavLink>
