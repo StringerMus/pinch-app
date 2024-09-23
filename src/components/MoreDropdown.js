@@ -16,21 +16,21 @@ const Arrow = React.forwardRef(({ onClick }, ref) => (
     />
   ));
 
-  export const MoreDropdown = () => {
+  export const MoreDropdown = ({handleEdit, handleDelete}) => {
     return (
         <Dropdown className="ml-auto" drop="left">
             <Dropdown.Toggle as={Arrow} />
             <Dropdown.Menu className="text-center">
                 <Dropdown.Item
                     className={styles.DropdownItem}
-                    onClick={() => {}}
+                    onClick={handleEdit}
                     aria-label="edit"
                 >
                     <i className="fa-solid fa-pen" />
                 </Dropdown.Item>
                 <Dropdown.Item 
                     className={styles.DropdownItem}
-                    onClick={() => {}}
+                    onClick={handleDelete}
                     aria-label="delete"
                 >
                     <i className="fa-solid fa-trash" />
