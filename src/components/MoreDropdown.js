@@ -5,9 +5,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
-const Arrow = React.forwardRef(({ onClick }, ref) => (
+const Dots = React.forwardRef(({ onClick }, ref) => (
     <i 
-    className="fa-solid fa-caret-down"
+    className="fa-solid fa-ellipsis"
       ref={ref}
       onClick={(e) => {
         e.preventDefault();
@@ -19,8 +19,11 @@ const Arrow = React.forwardRef(({ onClick }, ref) => (
   export const MoreDropdown = ({handleEdit, handleDelete}) => {
     return (
         <Dropdown className="ml-auto" drop="left">
-            <Dropdown.Toggle as={Arrow} />
-            <Dropdown.Menu className="text-center">
+            <Dropdown.Toggle as={Dots} />
+            <Dropdown.Menu
+                className="text-center"
+                popperConfig={{ strategy: "fixed" }}
+            >
                 <Dropdown.Item
                     className={styles.DropdownItem}
                     onClick={handleEdit}

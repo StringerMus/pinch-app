@@ -108,6 +108,11 @@ const Post = (props) => {
                             <i className='fa-regular fa-message' />
                         </Link>
                         {comments_count}
+                        {is_owner && postPage &&
+                                <MoreDropdown
+                                    handleEdit={handleEdit}
+                                    handleDelete={handleDelete}
+                            />}
                     </div>
                 </Col>
                 <Col md={6} xs={12}>
@@ -125,11 +130,6 @@ const Post = (props) => {
                             </Link>
                             <div className="ml-auto" style={{ marginRight: '20px' }}>
                                 <span>{updated_at}</span>
-                                {is_owner && postPage &&
-                                    <MoreDropdown
-                                        handleEdit={handleEdit}
-                                        handleDelete={handleDelete}
-                                    />}
                             </div>
                         </Media>
                     </Card.Body>
