@@ -5,6 +5,7 @@ import { Card, Container, Media, OverlayTrigger, Tooltip, Row, Col } from "react
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from '../../api/axiosDefaults';
+import { MoreDropdown } from '../../components/MoreDropdown';
 
 const Post = (props) => {
     const {
@@ -98,7 +99,7 @@ const Post = (props) => {
                     <Card.Body>
                         {item_name && <Card.Title className={styles.Post_head}>{item_name}</Card.Title>}
                         {category && <Card.Title className={styles.Post_cat}>{category}</Card.Title>}
-                        {price && <Card.Title className={styles.Post_sub}>{price} per day</Card.Title>}
+                        {price && <Card.Title className={styles.Post_sub}>£{price} per day</Card.Title>}
                         {location && <Card.Title className={styles.Post_text}>Location: {location}</Card.Title>}
                         {description && <Card.Title className={styles.Post_text}>{description}</Card.Title>}
                         {contact_email && <Card.Title className={styles.Post_text}>Contact email: {contact_email}</Card.Title>}
@@ -109,7 +110,7 @@ const Post = (props) => {
                             </Link>
                             <div className="ml-auto" style={{ marginRight: '20px' }}>
                                 <span>{updated_at}</span>
-                                {is_owner && postPage && " ..."}
+                                {is_owner && postPage && <MoreDropdown />}
                             </div>
                         </Media>
                     </Card.Body>
