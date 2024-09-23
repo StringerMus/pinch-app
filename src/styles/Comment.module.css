@@ -1,0 +1,17 @@
+.Owner {
+    font-weight: bold;
+    font-size: 16px;
+    color: rgb(0, 87, 75);
+    margin-right: 8px;
+}
+  
+    .Date {
+        font-size: 15px;
+        font-weight: lighter;
+        color: #c1c1c5;
+    }
+
+    .Content {
+        font-weight: lighter;
+        color: black;
+    }
