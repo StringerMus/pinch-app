@@ -17,6 +17,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 
+import PopularItems from "./PopularItems"; // Importing PopularItems component
+
 function PostPage() {
     const {id} = useParams();
     const [post, setPost] = useState({results: []});
@@ -81,8 +83,8 @@ function PostPage() {
         )}
         </Container>
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular items for desktop
+      <Col sm={2} className="d-none d-lg-block p-0 p-lg-2">
+        <PopularItems /> {/* Render the PopularItems component */}
       </Col>
     </Row>
   );
