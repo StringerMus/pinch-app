@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
+import styles from "../../styles/Comment.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
@@ -58,6 +59,7 @@ function PostPage() {
         {comments.results.length ? (
           comments.results.map(comment => (
             <Comment
+              className={styles.Drop}
               key={comment.id}
               {...comment}
               setPost={setPost}

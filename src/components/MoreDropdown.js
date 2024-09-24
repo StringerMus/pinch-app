@@ -7,9 +7,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 // Dropdown needs access to the DOM node in order to position the Menu
 const Dots = React.forwardRef(({ onClick }, ref) => (
     <i 
-    className="fa-solid fa-ellipsis"
-      ref={ref}
-      onClick={(e) => {
+        className={`fa-solid fa-ellipsis ${styles.Drop}`}
+        ref={ref}
+        onClick={(e) => {
         e.preventDefault();
         onClick(e);
       }}
@@ -29,14 +29,14 @@ const Dots = React.forwardRef(({ onClick }, ref) => (
                     onClick={handleEdit}
                     aria-label="edit"
                 >
-                    <i className="fa-solid fa-pen" />
+                    <i className={`fa-solid fa-pen ${styles.Drop}`} />
                 </Dropdown.Item>
                 <Dropdown.Item 
                     className={styles.DropdownItem}
                     onClick={handleDelete}
                     aria-label="delete"
                 >
-                    <i className="fa-solid fa-trash" />
+                    <i className={`fa-solid fa-trash ${styles.Drop}`} />
                 </Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>

@@ -34,12 +34,13 @@ const Post = (props) => {
     const history = useHistory();
 
     const handleEdit = () => {
-        history.push(`listings/${id}/edit`)
+        history.push(`/listings/${id}/edit`)
     }
 
     const handleDelete = async () => {
         try {
             await axiosRes.delete(`/posts/${id}/`);
+            //change to redirect to home
             history.goBack();
         } catch (err) {
         console.log(err);
@@ -104,7 +105,7 @@ const Post = (props) => {
                             </OverlayTrigger>
                         )}
                         {likes_count}
-                        <Link to={`/lisitngs/${id}`}>
+                        <Link to={`/listings/${id}`}>
                             <i className='fa-regular fa-message' />
                         </Link>
                         {comments_count}
