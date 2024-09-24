@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card"; // Import Card to use for displaying it
 import { Link } from "react-router-dom"; // Import Link for navigation
 import styles from "../../styles/PopularItems.module.css";
 
-const PopularItems = () => {
+const PopularItems = ({mobile}) => {
   const [popularPosts, setPopularPosts] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
 
@@ -27,8 +27,15 @@ const PopularItems = () => {
   }, []);
 
   return (
-    <Container>
+    <Container
+      className={mobile && 'd-lg-none text-center mb-3'}
+    >
       <p>Popular Items</p>
+      {mobile ? (
+        <div className="d-flex justify-content-around">
+          {/*code for popularposts in here?*/}
+        </div>
+      )}
       {hasLoaded ? (
         popularPosts.length ? (
           popularPosts.map((post) => (
