@@ -28,17 +28,17 @@ const PopularItems = ({mobile}) => {
 
   return (
     <Container className={mobile ? 'd-lg-none text-center mb-3' : 'd-none d-lg-block'}>
-      <p>Popular Items</p>
+      <p className="text-center">Popular Items</p>
       {hasLoaded ? (
         popularPosts.length ? (
           <div className={mobile ? 'd-flex justify-content-around' : ''}>
             {popularPosts
               .slice(0, mobile ? 4 : popularPosts.length) // Show 4 items on mobile, all on desktop
               .map((post) => (
-                <Card key={post.id} className={`mb-3 ${styles.Card}`}>
+                <Card key={post.id} className={`mb-3 mx-1 p-0 ${styles.Card}`}>
                   <Link to={`/listings/${post.id}`}> {/* Link to the post detail page */}
                     <Card.Img variant="top" src={post.image} alt={post.item_name} />
-                    <Card.Body>
+                    <Card.Body >
                       <Card.Title className={styles.Font}>{post.item_name}</Card.Title>
                     </Card.Body>
                   </Link>
