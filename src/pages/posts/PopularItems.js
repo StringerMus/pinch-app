@@ -27,27 +27,24 @@ const PopularItems = ({mobile}) => {
   }, []);
 
   return (
-    <Container
-      className={mobile && 'd-lg-none text-center mb-3'}
-    >
+    <Container className={mobile ? 'd-lg-none text-center mb-3' : 'd-none d-lg-block'}>
       <p>Popular Items</p>
-      {mobile ? (
-        <div className="d-flex justify-content-around">
-          {/*code for popularposts in here?*/}
-        </div>
-      )}
       {hasLoaded ? (
         popularPosts.length ? (
-          popularPosts.map((post) => (
-            <Card key={post.id} className={`mb-3 ${styles.Card}`}>
-              <Link to={`/listings/${post.id}`}> {/* Link to the post detail page */}
-                <Card.Img variant="top" src={post.image} alt={post.item_name} />
-                <Card.Body>
-                  <Card.Title className={styles.Font}>{post.item_name}</Card.Title>
-                </Card.Body>
-              </Link>
-            </Card>
-          ))
+          <div className={mobile ? 'd-flex justify-content-around' : ''}>
+            {popularPosts
+              .slice(0, mobile ? 4 : popularPosts.length) // Show 4 items on mobile, all on desktop
+              .map((post) => (
+                <Card key={post.id} className={`mb-3 ${styles.Card}`}>
+                  <Link to={`/listings/${post.id}`}> {/* Link to the post detail page */}
+                    <Card.Img variant="top" src={post.image} alt={post.item_name} />
+                    <Card.Body>
+                      <Card.Title className={styles.Font}>{post.item_name}</Card.Title>
+                    </Card.Body>
+                  </Link>
+                </Card>
+              ))}
+          </div>
         ) : (
           <p>No popular items found.</p>
         )
