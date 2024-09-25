@@ -10,7 +10,7 @@ export const useSetProfileData = () => useContext(SetProfileDataContext);
 
 export const ProfileDataProvider = ({ children }) => {
   const [profileData, setProfileData] = useState({
-    pageProfile: { results: [] },
+    pageProfile: { results: [] }, // Only pageProfile needed now
   });
 
   const currentUser = useCurrentUser();
@@ -18,12 +18,11 @@ export const ProfileDataProvider = ({ children }) => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(
-          "/profiles/?ordering=-followers_count"
-        );
+        // Removed the followers count ordering from the request
+        const { data } = await axiosReq.get("/profiles/");
         setProfileData((prevState) => ({
           ...prevState,
-          popularProfiles: data,
+          pageProfile: data, // Store the fetched profile data
         }));
       } catch (err) {
         console.log(err);
