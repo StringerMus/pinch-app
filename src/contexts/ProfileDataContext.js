@@ -1,42 +1,43 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { axiosReq } from "../api/axiosDefaults";
-import { useCurrentUser } from "./CurrentUserContext";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
-export const ProfileDataContext = createContext();
-export const SetProfileDataContext = createContext();
+const ProfileDataContext = createContext();
+const SetProfileDataContext = createContext();
 
 export const useProfileData = () => useContext(ProfileDataContext);
 export const useSetProfileData = () => useContext(SetProfileDataContext);
 
 export const ProfileDataProvider = ({ children }) => {
-    const [profileData, setProfileData] = useState({
-        pageProfile: { results: [] },
-        // popularProfiles no longer need it
-        // popularProfiles: { results: [] },
-    });
-     
-    const currentUser = useCurrentUser();
-     
-    useEffect(() => {
-        const handleMount = async () => {
-          try {
-            const { data } = await axiosReq.get("/profiles/");
-            setProfileData((prevState) => ({
-              ...prevState,
-              pageProfile: data,
-            }));
-          } catch (err) {
-            console.log(err);
-          }
-        };
-        handleMount();
-    }, [currentUser]);
+  const [profileData, setProfileData] = useState({
+    pageProfile: { results: [] },
+  });
 
-    return (
-        <ProfileDataContext.Provider value={profileData}>
-            <SetProfileDataContext.Provider value={setProfileData}>
-                {children}
-            </SetProfileDataContext.Provider>
-        </ProfileDataContext.Provider>
-    );
+  const currentUser = useCurrentUser();
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(
+          "/profiles/?ordering=-followers_count"
+        );
+        setProfileData((prevState) => ({
+          ...prevState,
+          popularProfiles: data,
+        }));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [currentUser]);
+
+  return (
+    <ProfileDataContext.Provider value={profileData}>
+      <SetProfileDataContext.Provider value={setProfileData}>
+        {children}
+      </SetProfileDataContext.Provider>
+    </ProfileDataContext.Provider>
+  );
 };
