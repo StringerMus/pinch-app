@@ -1,0 +1,10 @@
+.NotFound{
+    font-family: "Tilt Warp", sans-serif;
+    color: rgb(255, 94, 120);
+}
+
+.Sub{
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    line-height: 1.7; /* 1.5 times the font size */
+}
