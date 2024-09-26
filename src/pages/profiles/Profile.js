@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from "../../styles/Profile.module.css";
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Avatar from '../../components/Avatar';
 

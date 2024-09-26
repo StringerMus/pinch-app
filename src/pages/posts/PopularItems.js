@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
 import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card"; // Import Card to use for displaying item name and image
-import { Link } from "react-router-dom"; // Import Link for navigation
+import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 import styles from "../../styles/PopularItems.module.css";
 
 const PopularItems = ({mobile}) => {
