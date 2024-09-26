@@ -41,7 +41,7 @@ const Post = (props) => {
         try {
             await axiosRes.delete(`/posts/${id}/`);
             //change to redirect to home
-            history.goBack();
+            history.goBack(); //history.goBack();
         } catch (err) {
         console.log(err);
       }
@@ -86,7 +86,7 @@ const Post = (props) => {
                     <Link to={`/listings/${id}`}>
                         <Card.Img src={image} alt={item_name} />
                     </Link>
-                    <div className="d-flex justify-content-center align-items-center">
+                    <div className="d-flex justify-content align-items-center">
                         {is_owner ? (
                             <OverlayTrigger placement='top' overlay={<Tooltip>Unable to like own listing</Tooltip>}>
                                 <i className='fa-solid fa-heart' />
@@ -97,16 +97,16 @@ const Post = (props) => {
                             </span>
                         ) : currentUser ? (
                             <span onClick={handleLike}>
-                                <i className={`fa-solid fa-heart ${styles.HeartOutline}`} />
+                                <i className={`fa-regular fa-heart ${styles.HeartOutline}`} />
                             </span>
                         ) : (
-                            <OverlayTrigger placement='top' overlay={<Tooltip>You need to log in to like</Tooltip>}>
+                            <OverlayTrigger placement='top' overlay={<Tooltip>You need to log in to like a listing</Tooltip>}>
                                 <i className='fa-solid fa-heart' />
                             </OverlayTrigger>
                         )}
                         {likes_count}
                         <Link to={`/listings/${id}`}>
-                            <i className='fa-regular fa-message' />
+                            <i className='fa-solid fa-message' />
                         </Link>
                         {comments_count}
                         {is_owner && postPage &&
