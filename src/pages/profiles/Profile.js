@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from "../../styles/Profile.module.css";
-import btnStyles from "../../styles/Button.module.css";
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Avatar from '../../components/Avatar';
 
@@ -20,12 +19,6 @@ const Profile = (props) => {
                 <Avatar src={image} height={imageSize} />
             </Link>
         </div>
-        {/*
-        <div className={`mx-2 ${styles.WordBreak}`}>
-            <strong>{owner}</strong>
-        </div>
-        <div className={`text-right ${!mobile && 'ml-auto'}`}></div>
-        */}
     </div>
   );
 };

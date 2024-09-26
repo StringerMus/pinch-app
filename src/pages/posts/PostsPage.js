@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Form from "react-bootstrap/Form";
+import Form from "react-bootstrap/Form";//
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -9,7 +9,7 @@ import Post from "./Post";
 import Asset from "../../components/Asset";
 
 import appStyles from "../../App.module.css";
-import styles from "../../styles/PostsPage.module.css";
+import styles from "../../styles/PostsPage.module.css";//
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -17,7 +17,7 @@ import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
-import PopularItems from "./PopularItems"; // Importing PopularItems component
+import PopularItems from "./PopularItems";
 
 function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
@@ -49,7 +49,7 @@ function PostsPage({ message, filter = "" }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={9}>
-        <PopularItems mobile/> {/* Render the PopularItems component */}
+        <PopularItems mobile/>
         <i className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`} />
         <Form className={styles.SearchBar}
         onSubmit={(event) => event.preventDefault()}
@@ -88,7 +88,7 @@ function PostsPage({ message, filter = "" }) {
         )}
       </Col>
       <Col sm={2} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularItems /> {/* Render the PopularItems component */}
+        <PopularItems />
       </Col>
     </Row>
   );

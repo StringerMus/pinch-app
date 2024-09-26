@@ -18,3 +18,9 @@
 .Active i, .Active {
     color: rgb(255, 204, 204);
 }
+
+.Username {
+    margin-left: 8px;
+    font-weight: bold; 
+    color: rgb(255, 255, 255);
+}

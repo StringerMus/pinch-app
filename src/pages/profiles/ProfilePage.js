@@ -23,6 +23,7 @@ import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import PopularItems from "../posts/PopularItems"; // Importing PopularItems component
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -108,8 +109,8 @@ function ProfilePage() {
 
   return (
     <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-      <p>mobile Popular</p>
+      <Col className="py-2 p-0 p-lg-2" lg={9}>
+      <PopularItems mobile/>
         <Container className={appStyles.Content}>
           {hasLoaded ? (
             <>
@@ -121,8 +122,8 @@ function ProfilePage() {
           )}
         </Container>
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <p>DT Popular</p>
+      <Col sm={2} className="d-none d-lg-block p-0 p-lg-2">
+        <PopularItems />
       </Col>
     </Row>
   );

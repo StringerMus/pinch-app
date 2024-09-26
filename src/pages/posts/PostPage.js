@@ -46,8 +46,8 @@ function PostPage() {
 
   return (
     <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular items for mobile</p>
+      <Col className="py-2 p-0 p-lg-2" lg={9}>
+        <PopularItems mobile/>
         <Post {...post.results[0]} setPosts={setPost} postPage/>
         <Container className={appStyles.Content}>
         {currentUser ? (
@@ -84,7 +84,7 @@ function PostPage() {
         </Container>
       </Col>
       <Col sm={2} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularItems /> {/* Render the PopularItems component */}
+        <PopularItems />
       </Col>
     </Row>
   );
