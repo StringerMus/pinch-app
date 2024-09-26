@@ -49,9 +49,13 @@ function PostsPage({ message, filter = "" }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={9}>
-        <PopularItems mobile/>
-        <i className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`} />
-        <Form className={styles.SearchBar}
+        
+        <div className="text-center my-4 mb-3 px-3">
+          <h4 className={styles.Welcome}>You don't need to buy when you can borrow</h4> 
+          <p className={styles.Sub}>Start by searching for an item or scroll though the listings</p>
+        </div>
+        <i className={`fa-solid fa-magnifying-glass pl-4 ${styles.SearchIcon}`} />
+        <Form className={`px-3 ${styles.SearchBar}`}
         onSubmit={(event) => event.preventDefault()}
         >
           <Form.Control
@@ -61,7 +65,7 @@ function PostsPage({ message, filter = "" }) {
             className="mr-sm-2"
             placeholder="Search for an item" />
         </Form>
-
+        <PopularItems mobile/>
         {hasLoaded ? (
           <>
             {posts.results.length ? (
