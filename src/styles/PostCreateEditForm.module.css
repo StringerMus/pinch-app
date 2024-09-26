@@ -1,3 +1,13 @@
 .Container {
     min-height: 343px;
   }
+
+.Message{
+  color: rgb(255, 94, 120);
+  font-size: 12px;
+}
+
+.Title{
+  font-family: "Tilt Warp", sans-serif;
+  color: rgb(0, 87, 75);
+}

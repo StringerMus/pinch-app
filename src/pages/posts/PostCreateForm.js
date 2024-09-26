@@ -98,7 +98,6 @@ function PostCreateForm() {
         ))}
 
       <Form.Row>
-      {/* need to be a figure */}
         <Form.Group as={Col}>
         <Form.Label className="d-none">Cost per day</Form.Label>
         <Form.Control
@@ -204,7 +203,10 @@ function PostCreateForm() {
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+        <h2 className={`ml-3 mt-3 mb-2 ${styles.Title}`}>Create a listing</h2>
+      </Row>
+      <Row>
+        <Col className="py-2 p-0 p-md-2" md={6} lg={6}>
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
@@ -242,6 +244,8 @@ function PostCreateForm() {
                 onChange={handleChangeImage}
                 ref={imageInput}
               />
+              <p className={styles.Message}>Max file size 2mb<br/>
+                Max height and width 4096px</p>
             </Form.Group>
             {errors.image?.map((message, idx) => (
               <Alert key={idx} variant="warning">
@@ -251,7 +255,7 @@ function PostCreateForm() {
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+        <Col md={6} lg={6} className="d-none d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
       </Row>
