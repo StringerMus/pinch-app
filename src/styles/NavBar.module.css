@@ -1,6 +1,9 @@
 .Logo {
     font-family: "Tilt Warp", sans-serif;
     color: white;
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
 }
 
 .NavBar {

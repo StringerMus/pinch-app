@@ -81,8 +81,8 @@ const NavBar = () => {
       <Container>
 
         <NavLink to="/">
-          <Navbar.Brand className={styles.Logo}>
-            <h2>Pinch</h2>
+          <Navbar.Brand >
+            <h2 className={styles.Logo}>Pinch</h2>
           </Navbar.Brand>
         </NavLink>
 
