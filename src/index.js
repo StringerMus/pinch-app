@@ -7,6 +7,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import { CurrentUserProvider } from './contexts/CurrentUserContext';
 import { ProfileDataProvider } from './contexts/ProfileDataContext';
 
+//remove react.strictmode before final deployment - add comma on closing router
 ReactDOM.render(
   <React.StrictMode>
     <Router>

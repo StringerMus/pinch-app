@@ -87,7 +87,7 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
     <hr/>
-      <p className={`text-center ${styles.Font2}`}>{profile?.owner}'s item listings</p>
+      <h5 className={`text-center my-4 ${styles.Font2}`}>{profile?.owner}'s item listings</h5>
       {profilePosts.results.length ? (
         <InfiniteScroll
           children={profilePosts.results.map((post) => (
