@@ -48,7 +48,6 @@ function PostEditForm() {
 
         handleMount();
     }, [history, id]);
-    //Edit form code
 
   const handleChange = (event) => {
     setPostData({
@@ -78,7 +77,6 @@ function PostEditForm() {
     formData.append("location", location);
     formData.append("contact_email", contact_email);
 
-    //Edit form code
     if (imageInput?.current?.files[0]) {
         formData.append("image", imageInput.current.files[0]);
     }
@@ -108,11 +106,6 @@ function PostEditForm() {
           onChange={handleChange}
         />
     </Form.Group>
-        {errors.item_name?.map((message, idx) => (
-          <Alert key={idx} variant="warning">
-            {message}
-          </Alert>
-        ))}
 
       <Form.Row>
         <Form.Group as={Col}>
@@ -125,11 +118,6 @@ function PostEditForm() {
           onChange={handleChange}
         />
         </Form.Group>
-        {errors.price?.map((message, idx) => (
-          <Alert key={idx} variant="warning">
-            {message}
-          </Alert>
-        ))}
 
         <Form.Group as={Col}>
         <Form.Label className="d-none">Category</Form.Label>
@@ -148,11 +136,6 @@ function PostEditForm() {
           <option>other</option>
         </Form.Control>
         </Form.Group>
-        {errors.category?.map((message, idx) => (
-          <Alert key={idx} variant="warning">
-            {message}
-          </Alert>
-        ))}
       </Form.Row>
 
       <Form.Group>
@@ -166,11 +149,6 @@ function PostEditForm() {
           onChange={handleChange}
         />
         </Form.Group>
-        {errors.description?.map((message, idx) => (
-          <Alert key={idx} variant="warning">
-            {message}
-          </Alert>
-        ))}
 
         <Form.Row>
           <Form.Group as={Col}>
@@ -182,11 +160,6 @@ function PostEditForm() {
               value={location}
               onChange={handleChange}/>
           </Form.Group>
-          {errors.location?.map((message, idx) => (
-            <Alert key={idx} variant="warning">
-              {message}
-            </Alert>
-          ))}
 
           <Form.Group as={Col}>
             <Form.Label className="d-none">Contact Email</Form.Label>
@@ -199,11 +172,6 @@ function PostEditForm() {
             />
           </Form.Group>
         </Form.Row>
-        {errors.contact_email?.map((message, idx) => (
-          <Alert key={idx} variant="warning">
-            {message}
-          </Alert>
-        ))}
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
@@ -214,6 +182,36 @@ function PostEditForm() {
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         Save edit
       </Button>
+    {errors.contact_email?.map((message, idx) => (
+      <Alert key={idx} variant="warning">
+        {`Contact email: ${message}`}
+      </Alert>
+    ))}
+    {errors.location?.map((message, idx) => (
+      <Alert key={idx} variant="warning">
+        {`Location: ${message}`}
+      </Alert>
+    ))}
+    {errors.description?.map((message, idx) => (
+      <Alert key={idx} variant="warning">
+        {`Description: ${message}`}
+      </Alert>
+    ))}
+    {errors.category?.map((message, idx) => (
+      <Alert key={idx} variant="warning">
+        {`Category: ${message}`}
+      </Alert>
+    ))}
+    {errors.price?.map((message, idx) => (
+      <Alert key={idx} variant="warning">
+        {`Price: ${message}`}
+      </Alert>
+    ))}
+    {errors.item_name?.map((message, idx) => (
+      <Alert key={idx} variant="warning">
+        {`Item name: ${message}`}
+      </Alert>
+    ))}
     </div>
   );
 
