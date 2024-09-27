@@ -11,6 +11,7 @@
     border-bottom: 4px solid rgb(255, 186, 186);
     color: white;
 }
+
 .NavLink {
     padding: 10px;
 }
@@ -23,4 +24,8 @@
     margin-left: 8px;
     font-weight: bold; 
     color: rgb(255, 255, 255);
+}
+
+.Username:hover {
+    color: rgb(255, 204, 204);
 }

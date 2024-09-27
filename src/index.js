@@ -9,15 +9,13 @@ import { ProfileDataProvider } from './contexts/ProfileDataContext';
 
 //remove react.strictmode before final deployment - add comma on closing router
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <CurrentUserProvider>
-        <ProfileDataProvider>
-          <App />
-        </ProfileDataProvider>
-      </CurrentUserProvider>
-    </Router>
-  </React.StrictMode>,
+  <Router>
+    <CurrentUserProvider>
+      <ProfileDataProvider>
+        <App />
+      </ProfileDataProvider>
+    </CurrentUserProvider>
+  </Router>,
   document.getElementById('root')
 );
 

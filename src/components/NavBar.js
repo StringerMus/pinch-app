@@ -19,8 +19,6 @@ const NavBar = () => {
 
   const {expanded, setExpanded, ref} = useClickOutsideToggle();
 
-  console.log(currentUser);  // To see what `currentUser` contains
-
   const handleSignOut = async () => {
     try {
       await axios.post('dj-rest-auth/logout/');
