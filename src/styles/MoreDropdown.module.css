@@ -13,3 +13,7 @@
 .Drop {
   color: rgb(0, 87, 75);
 }
+
+.Drop:hover {
+  color: rgb(255, 204, 204);
+}

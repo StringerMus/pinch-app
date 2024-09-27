@@ -27,7 +27,7 @@ function PostsPage({ message, filter = "" }) {
 
   const [query, setQuery] = useState("");
 
-  const currentUser = useCurrentUser(); //new
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -57,15 +57,15 @@ function PostsPage({ message, filter = "" }) {
         </div>
         <Row className={`text-center py-3 px-5 ${styles.Steps}`}>
           <Col>
-            <i class={`fa-solid fa-magnifying-glass ${styles.Steps}`}></i>
+            <i className={`fa-solid fa-magnifying-glass ${styles.Steps}`} />
             <p className={styles.Steps}>1. Search for the item you need.</p>
           </Col>
           <Col>
-            <i class={`fa-solid fa-envelope-open-text ${styles.Steps}`}></i>
+            <i className={`fa-solid fa-envelope-open-text ${styles.Steps}`} />
             <p className={styles.Steps}>2. Contact the owner.</p>
           </Col>
           <Col>
-            <i class={`fa-regular fa-handshake ${styles.Steps}`}></i>
+            <i className={`fa-regular fa-handshake ${styles.Steps}`} />
             <p className={styles.Steps}>3. Arrange payment, pick-up & drop-off.</p>
           </Col>
         </Row>

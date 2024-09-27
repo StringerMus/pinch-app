@@ -15,6 +15,7 @@ export const ProfileDataProvider = ({ children }) => {
 
   const currentUser = useCurrentUser();
 
+//comment out this code
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -31,6 +32,7 @@ export const ProfileDataProvider = ({ children }) => {
 
     handleMount();
   }, [currentUser]);
+//comment out
 
   return (
     <ProfileDataContext.Provider value={profileData}>

@@ -15,7 +15,7 @@
   
   .SearchIcon:hover {
     cursor: default;
-    color: rgb(0, 87, 75);
+    color: rgb(255, 94, 120);;
   }
 
 .Welcome{
@@ -28,5 +28,10 @@
 }
 
 .Steps{
+  color: rgb(0, 87, 75);
+}
+
+.Steps:hover{
+  cursor: default;
   color: rgb(0, 87, 75);
 }
