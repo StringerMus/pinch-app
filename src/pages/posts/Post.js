@@ -132,7 +132,7 @@ const Post = (props) => {
                         {contact_email && <Card.Title className={styles.Post_text}>Contact email: {contact_email}</Card.Title>}
                         <Media className="align-items-center" >
                             <Link className={styles.Profile} to={`/profiles/${profile_id}`}>
-                                <Avatar src={profile_image} height={55} />
+                                <Avatar src={profile_image} height={45} />
                                 {owner}
                             </Link>
                             <div className="ml-auto" style={{ marginRight: '20px' }}>
