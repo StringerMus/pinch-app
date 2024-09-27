@@ -33,7 +33,7 @@ const PopularItems = ({mobile}) => {
         popularPosts.length ? (
           <div className={mobile ? 'd-flex justify-content-around' : ''}>
             {popularPosts
-              .slice(0, mobile ? 4 : popularPosts.length) // Show 4 items on mobile, all on desktop
+              .slice(0, mobile ? 3 : popularPosts.length) // Show 4 items on mobile, all on desktop
               .map((post) => (
                 <Card key={post.id} className={`mb-3 mx-1 p-0 ${styles.Card}`}>
                   <Link to={`/listings/${post.id}`}> {/* Link to the post detail page */}

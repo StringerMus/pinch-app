@@ -52,11 +52,23 @@ function PostsPage({ message, filter = "" }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={9}>
-        
-        <div className="text-center my-4 mb-3 px-3">
-          <h4 className={styles.Welcome}>You don't need to buy when you can borrow</h4> 
-          <p className={styles.Sub}>Start by searching for an item or scroll though the listings</p>
+        <div className="text-center my-4 mb-4 px-3">
+          <h3 className={styles.Welcome}>You don't need to buy when you can borrow</h3> 
         </div>
+        <Row className={`text-center py-3 px-5 ${styles.Steps}`}>
+          <Col>
+            <i class={`fa-solid fa-magnifying-glass ${styles.Steps}`}></i>
+            <p className={styles.Steps}>1. Search for the item you need.</p>
+          </Col>
+          <Col>
+            <i class={`fa-solid fa-envelope-open-text ${styles.Steps}`}></i>
+            <p className={styles.Steps}>2. Contact the owner.</p>
+          </Col>
+          <Col>
+            <i class={`fa-regular fa-handshake ${styles.Steps}`}></i>
+            <p className={styles.Steps}>3. Arrange payment, pick-up & drop-off.</p>
+          </Col>
+        </Row>
         <i className={`fa-solid fa-magnifying-glass pl-4 ${styles.SearchIcon}`} />
         <Form className={`px-3 ${styles.SearchBar}`}
         onSubmit={(event) => event.preventDefault()}
@@ -69,6 +81,7 @@ function PostsPage({ message, filter = "" }) {
             placeholder="Search for an item" />
         </Form>
         <PopularItems mobile/>
+        <p className= {`text-center my-4 mb-3 px-3 ${styles.Sub}`}>Start by searching for an item or scroll though the listings</p>
         {hasLoaded ? (
           <>
             {posts.results.length ? (

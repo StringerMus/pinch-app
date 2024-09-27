@@ -20,9 +20,13 @@
 
 .Welcome{
   font-family: "Tilt Warp", sans-serif;
+  color:rgb(255, 94, 120);
 }
 
 .Sub{
-
   color: rgb(255, 94, 120);
+}
+
+.Steps{
+  color: rgb(0, 87, 75);
 }
