@@ -25,6 +25,8 @@ function PostsPage({ message, filter = "" }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
+  const likedPage = pathname === "/liked";
+
   const [query, setQuery] = useState("");
 
   const currentUser = useCurrentUser();
@@ -52,49 +54,61 @@ function PostsPage({ message, filter = "" }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={9}>
-        <div className="text-center my-4 mb-4 px-3">
-          <h3 className={styles.Welcome}>You don't need to buy when you can borrow</h3> 
-        </div>
-        <Row className={`text-center py-3 px-5 ${styles.Steps}`}>
-          <Col>
-            <i className={`fa-solid fa-magnifying-glass ${styles.Steps}`} />
-            <p className={styles.Steps}>1. Search for the item you need</p>
-          </Col>
-          <Col>
-            <i className={`fa-solid fa-envelope-open-text ${styles.Steps}`} />
-            <p className={styles.Steps}>2. Contact the owner</p>
-          </Col>
-          <Col>
-            <i className={`fa-regular fa-handshake ${styles.Steps}`} />
-            <p className={styles.Steps}>3. Arrange payment, pick-up & drop-off</p>
-          </Col>
-        </Row>
-        <i className={`fa-solid fa-magnifying-glass pl-4 ${styles.SearchIcon}`} />
-        <Form className={`px-3 ${styles.SearchBar}`}
-        onSubmit={(event) => event.preventDefault()}
-        >
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text`"
-            className="mr-sm-2"
-            placeholder="Search for an item" />
-        </Form>
-        <PopularItems mobile/>
-        <p className= {`text-center my-4 mb-3 px-3 ${styles.Sub}`}>Start by searching for an item or scroll though the listings</p>
+        {/* Conditionally render the welcome text and steps */}
+        {!likedPage && (
+          <>
+            <div className="text-center my-4 mb-4 px-3">
+              <h3 className={styles.Welcome}>
+                You don't need to buy when you can borrow
+              </h3>
+            </div>
+            <Row className={`text-center py-3 px-5 ${styles.Steps}`}>
+              <Col>
+                <i className={`fa-solid fa-magnifying-glass ${styles.Steps}`} />
+                <p className={styles.Steps}>1. Search for the item you need</p>
+              </Col>
+              <Col>
+                <i className={`fa-solid fa-envelope-open-text ${styles.Steps}`} />
+                <p className={styles.Steps}>2. Contact the owner</p>
+              </Col>
+              <Col>
+                <i className={`fa-regular fa-handshake ${styles.Steps}`} />
+                <p className={styles.Steps}>3. Arrange payment, pick-up & drop-off</p>
+              </Col>
+            </Row>
+            <i className={`fa-solid fa-magnifying-glass pl-4 ${styles.SearchIcon}`} />
+            <Form
+              className={`px-3 ${styles.SearchBar}`}
+              onSubmit={(event) => event.preventDefault()}
+            >
+              <Form.Control
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                type="text"
+                className="mr-sm-2"
+                placeholder="Search for an item"
+              />
+            </Form>
+            <PopularItems mobile />
+            <p className={`text-center my-4 mb-3 px-3 ${styles.Sub}`}>
+              Start by searching for an item or scroll though the listings
+            </p>
+          </>
+        )}
+
+        {/* Render the post listings */}
         {hasLoaded ? (
           <>
             {posts.results.length ? (
-              <InfiniteScroll 
-                children={
-                  posts.results.map((post) => (
-                    <Post key={post.id} {...post} setPosts={setPosts} />
-                  ))}
-                  dataLength={posts.results.length}
-                  loader={<Asset spinner />}
-                  hasMore={!!posts.next}
-                  next={() => fetchMoreData(posts, setPosts)}
-                />
+              <InfiniteScroll
+                children={posts.results.map((post) => (
+                  <Post key={post.id} {...post} setPosts={setPosts} />
+                ))}
+                dataLength={posts.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!posts.next}
+                next={() => fetchMoreData(posts, setPosts)}
+              />
             ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
@@ -107,9 +121,13 @@ function PostsPage({ message, filter = "" }) {
           </Container>
         )}
       </Col>
-      <Col sm={2} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularItems />
-      </Col>
+
+      {/* Conditionally hide PopularItems sidebar */}
+      {!likedPage && (
+        <Col sm={2} className="d-none d-lg-block p-0 p-lg-2">
+          <PopularItems />
+        </Col>
+      )}
     </Row>
   );
 }

@@ -36,6 +36,7 @@ function App() {
                   <PostsPage
                     message="No results found. Adjust the search keyword or like a post."
                     filter={`liked=true`}
+                    likedPage={true}
                   />
                 )}
               />
