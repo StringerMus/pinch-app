@@ -58,15 +58,15 @@ function PostsPage({ message, filter = "" }) {
         <Row className={`text-center py-3 px-5 ${styles.Steps}`}>
           <Col>
             <i className={`fa-solid fa-magnifying-glass ${styles.Steps}`} />
-            <p className={styles.Steps}>1. Search for the item you need.</p>
+            <p className={styles.Steps}>1. Search for the item you need</p>
           </Col>
           <Col>
             <i className={`fa-solid fa-envelope-open-text ${styles.Steps}`} />
-            <p className={styles.Steps}>2. Contact the owner.</p>
+            <p className={styles.Steps}>2. Contact the owner</p>
           </Col>
           <Col>
             <i className={`fa-regular fa-handshake ${styles.Steps}`} />
-            <p className={styles.Steps}>3. Arrange payment, pick-up & drop-off.</p>
+            <p className={styles.Steps}>3. Arrange payment, pick-up & drop-off</p>
           </Col>
         </Row>
         <i className={`fa-solid fa-magnifying-glass pl-4 ${styles.SearchIcon}`} />

@@ -10,28 +10,28 @@ export const useSetProfileData = () => useContext(SetProfileDataContext);
 
 export const ProfileDataProvider = ({ children }) => {
   const [profileData, setProfileData] = useState({
-    pageProfile: { results: [] }, // Only pageProfile needed now
+    pageProfile: { results: [] },
   });
 
   const currentUser = useCurrentUser();
 
-//comment out this code
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        // Removed the followers count ordering from the request
-        const { data } = await axiosReq.get("/profiles/");
-        setProfileData((prevState) => ({
-          ...prevState,
-          pageProfile: data, // Store the fetched profile data
-        }));
-      } catch (err) {
-        console.log(err);
-      }
-    };
+//this code causing the change in profile name
+  // useEffect(() => {
+  //   const handleMount = async () => {
+  //     try {
+  //       // Removed the followers count ordering from the request
+  //       const { data } = await axiosReq.get("/profiles/");
+  //       setProfileData((prevState) => ({
+  //         ...prevState,
+  //         pageProfile: data, // Store the fetched profile data
+  //       }));
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
 
-    handleMount();
-  }, [currentUser]);
+  //   handleMount();
+  // }, [currentUser]);
 //comment out
 
   return (
