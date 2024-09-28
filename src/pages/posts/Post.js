@@ -14,6 +14,7 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from 'react-router-dom/';
+import { useNotification } from "../../contexts/NotificationContext"; // Note
 
 const Post = (props) => {
     const {
@@ -39,6 +40,7 @@ const Post = (props) => {
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
     const history = useHistory();
+    const showNotification = useNotification(); // Get showNotification from context
 
     const handleEdit = () => {
         history.push(`/listings/${id}/edit`)
@@ -47,6 +49,7 @@ const Post = (props) => {
     const handleDelete = async () => {
         try {
             await axiosRes.delete(`/posts/${id}/`);
+            showNotification("Listing deleted successfully!"); // Show notification
             history.push(`/`);
         } catch (err) {
         console.log(err);

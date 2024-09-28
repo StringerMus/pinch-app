@@ -7,10 +7,12 @@ import InputGroup from "react-bootstrap/InputGroup";
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { useNotification } from "../../contexts/NotificationContext"; // Note
 
 function CommentCreateForm(props) {
   const { post, setPost, setComments, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
+  const showNotification = useNotification(); // Get showNotification from context
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -36,6 +38,7 @@ function CommentCreateForm(props) {
         ],
       }));
       setContent("");
+      showNotification("Comment posted successfully!"); // Show notification on success
     } catch (err) {
       console.log(err);
     }

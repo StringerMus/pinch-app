@@ -71,7 +71,7 @@ function PostCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
-      showNotification("Post created successfully!"); // Trigger notification here
+      showNotification("Listing created successfully!"); // Trigger notification here
       history.push(`/listings/${data.id}`);
     } catch (err) {
       console.log(err);

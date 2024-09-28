@@ -11,14 +11,23 @@ export const NotificationProvider = ({ children }) => {
     setNotification(message);
     setTimeout(() => {
       setNotification(null);
-    }, 3000); // Auto-hide after 3 seconds
+    }, 10000); // Auto-hide after 5 seconds
   };
 
   return (
     <NotificationContext.Provider value={showNotification}>
       {children}
       {notification && (
-        <div style={{ position: "fixed", bottom: 10, right: 10, backgroundColor: "green", color: "white", padding: "10px", zIndex: 1000 }}>
+        <div style={{
+            position: "fixed",
+            bottom: 10, // Adjusts the distance from the top
+            left: "50%", // Positions it at the horizontal center
+            transform: "translateX(-50%)", // Centers it horizontally
+            backgroundColor: "green",
+            color: "white",
+            padding: "10px",
+            zIndex: 1000
+        }}>
           {notification}
         </div>
       )}

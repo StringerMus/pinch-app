@@ -14,6 +14,7 @@ import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useNotification } from "../../contexts/NotificationContext"; // Import the notification context
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
@@ -32,6 +33,7 @@ function PostEditForm() {
   const imageInput = useRef(null)
   const history = useHistory()
   const { id } = useParams();
+  const showNotification = useNotification(); // Get showNotification from context
 
     useEffect(() => {
         const handleMount = async () => {
@@ -83,6 +85,7 @@ function PostEditForm() {
 
     try {
       await axiosReq.put(`/posts/${id}/`, formData);
+      showNotification("Listing edited successfully!"); // Show notification on success
       history.push(`/listings/${id}`);
       console.log(id);
     } catch (err) {
