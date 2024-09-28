@@ -20,6 +20,8 @@ import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
+import { useNotification } from "../../contexts/NotificationContext"; // Import the notification hook
+
 function PostCreateForm() {
   useRedirect("loggedOut")
   const [errors, setErrors] = useState({});
@@ -34,9 +36,9 @@ function PostCreateForm() {
     image: "",  
   });
   const { item_name, description, category, price, location, contact_email, image } = postData;
-
   const imageInput = useRef(null)
   const history = useHistory()
+  const showNotification = useNotification(); // Get the showNotification function
 
   const handleChange = (event) => {
     setPostData({
@@ -69,6 +71,7 @@ function PostCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
+      showNotification("Post created successfully!"); // Trigger notification here
       history.push(`/listings/${data.id}`);
     } catch (err) {
       console.log(err);

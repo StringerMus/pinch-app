@@ -6,13 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom';
 import { CurrentUserProvider } from './contexts/CurrentUserContext';
 import { ProfileDataProvider } from './contexts/ProfileDataContext';
+import { NotificationProvider } from './contexts/NotificationContext';
 
-//remove react.strictmode before final deployment - add comma on closing router
 ReactDOM.render(
   <Router>
     <CurrentUserProvider>
       <ProfileDataProvider>
-        <App />
+        <NotificationProvider>
+          <App />
+        </NotificationProvider>
       </ProfileDataProvider>
     </CurrentUserProvider>
   </Router>,
