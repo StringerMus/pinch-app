@@ -17,8 +17,8 @@ import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
-
 import signinImage from "../../assets/signin.jpg";
+import { useNotification } from "../../contexts/NotificationContext"; // Note
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
@@ -29,8 +29,8 @@ function SignInForm() {
     password: "",
   });
   const { username, password } = signInData;
-
   const [errors, setErrors] = useState({});
+  const showNotification = useNotification(); // Get showNotification
 
   const history = useHistory();
   const handleSubmit = async (event) => {
@@ -41,6 +41,7 @@ function SignInForm() {
       setCurrentUser(data.user)
       setTokenTimestamp(data);
       history.push("/"); //changed from history.goBack(); for homepage
+      showNotification("Signed in successfully!"); // Show notification
     } catch (err) {
         setErrors(err.response?.data);
     }

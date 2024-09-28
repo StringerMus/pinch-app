@@ -16,6 +16,7 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { useNotification } from "../../contexts/NotificationContext"; // Note
 
 const UsernameForm = () => {
   const [username, setUsername] = useState("");
@@ -26,6 +27,7 @@ const UsernameForm = () => {
 
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const showNotification = useNotification(); // Get showNotification from context
 
   useEffect(() => {
     if (currentUser?.profile_id?.toString() === id) {
@@ -45,6 +47,7 @@ const UsernameForm = () => {
         ...prevUser,
         username,
       }));
+      showNotification("Username updated successfully!"); // Show notification
       history.goBack();
     } catch (err) {
       console.log(err);

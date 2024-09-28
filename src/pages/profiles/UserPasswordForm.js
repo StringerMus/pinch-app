@@ -13,11 +13,13 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { useNotification } from "../../contexts/NotificationContext"; // Note
 
 const UserPasswordForm = () => {
   const history = useHistory();
   const { id } = useParams();
   const currentUser = useCurrentUser();
+  const showNotification = useNotification(); // Get showNotification 
 
   const [userData, setUserData] = useState({
     new_password1: "",
@@ -45,6 +47,7 @@ const UserPasswordForm = () => {
     event.preventDefault();
     try {
       await axiosRes.post("/dj-rest-auth/password/change/", userData);
+      showNotification("Password changed successfully!"); // Show notification
       history.goBack();
     } catch (err) {
       console.log(err);

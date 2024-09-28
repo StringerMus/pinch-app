@@ -15,6 +15,7 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { useNotification } from "../../contexts/NotificationContext"; // Note
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -22,6 +23,7 @@ const ProfileEditForm = () => {
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
+  const showNotification = useNotification(); // Get showNotification from context
 
   const [profileData, setProfileData] = useState({
     name: "",
@@ -67,6 +69,7 @@ const ProfileEditForm = () => {
         ...currentUser,
         profile_image: data.image,
       }));
+      showNotification("Profile edited successfully!"); // Show notification
       history.goBack();
     } catch (err) {
       console.log(err);

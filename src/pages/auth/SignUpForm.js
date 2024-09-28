@@ -6,16 +6,6 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
 import signupImage from "../../assets/signup.jpg";
-
-/*import {
-  Form,
-  Button,
-  Image,
-  Col,
-  Row,
-  Container,
-  Alert,
-} from "react-bootstrap"; */
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -26,6 +16,7 @@ import Container from "react-bootstrap/Container";
 
 import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
+import { useNotification } from "../../contexts/NotificationContext"; // Note
 
 const SignUpForm = () => {
   useRedirect('loggedIn')
@@ -35,10 +26,9 @@ const SignUpForm = () => {
     password2: "",
   });
   const { username, password1, password2 } = signUpData;
-
   const [errors, setErrors] = useState({});
-
   const history = useHistory();
+  const showNotification = useNotification(); // Get showNotification
 
   const handleChange = (event) => {
     setSignUpData({
@@ -51,7 +41,8 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      history.push("/"); //history.push("/signin");
+      showNotification("Signed up successfully!"); // Show notification
+      history.push("/");
     } catch (err) {
       console.log(err.response?.data); // Log the error response for debugging
       setErrors(err.response?.data);
