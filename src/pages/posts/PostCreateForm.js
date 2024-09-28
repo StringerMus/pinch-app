@@ -80,7 +80,6 @@ function PostCreateForm() {
 
   const textFields = (
     <div className="text-center">
-
     <Form.Group>
       <Form.Label className="d-none">Item Name</Form.Label>
       <Form.Control
@@ -202,6 +201,7 @@ function PostCreateForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
+
       <Row>
         <h2 className={`ml-3 mt-3 mb-2 ${styles.Title}`}>Create a listing</h2>
       </Row>
