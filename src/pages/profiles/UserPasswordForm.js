@@ -14,6 +14,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { useNotification } from "../../contexts/NotificationContext"; // Note
+import styles from "../../styles/PostCreateEditForm.module.css";
 
 const UserPasswordForm = () => {
   const history = useHistory();
@@ -58,12 +59,13 @@ const UserPasswordForm = () => {
   return (
     <Row>
       <Col className="py-2 mx-auto text-center" md={6}>
+      <h2 className={`text-center mt-4 mb-4 ${styles.Title}`}>Update password</h2>
         <Container className={appStyles.Content}>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>New password</Form.Label>
               <Form.Control
-                placeholder="new password"
+                placeholder="Enter new password"
                 type="password"
                 value={new_password1}
                 onChange={handleChange}
@@ -78,7 +80,7 @@ const UserPasswordForm = () => {
             <Form.Group>
               <Form.Label>Confirm password</Form.Label>
               <Form.Control
-                placeholder="confirm new password"
+                placeholder="Confirm new password"
                 type="password"
                 value={new_password2}
                 onChange={handleChange}
@@ -94,13 +96,13 @@ const UserPasswordForm = () => {
               className={`${btnStyles.Button} ${btnStyles.Blue}`}
               onClick={() => history.goBack()}
             >
-              cancel
+              Cancel
             </Button>
             <Button
               type="submit"
               className={`${btnStyles.Button} ${btnStyles.Blue}`}
             >
-              save
+              Save
             </Button>
           </Form>
         </Container>

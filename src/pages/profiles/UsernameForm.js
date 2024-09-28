@@ -17,6 +17,7 @@ import {
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { useNotification } from "../../contexts/NotificationContext"; // Note
+import styles from "../../styles/PostCreateEditForm.module.css";
 
 const UsernameForm = () => {
   const [username, setUsername] = useState("");
@@ -56,40 +57,41 @@ const UsernameForm = () => {
   };
 
   return (
-    <Row>
-      <Col className="py-2 mx-auto text-center" md={6}>
-        <Container className={appStyles.Content}>
-          <Form onSubmit={handleSubmit} className="my-2">
-            <Form.Group>
-              <Form.Label>Change username</Form.Label>
-              <Form.Control
-                placeholder="username"
-                type="text"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-              />
-            </Form.Group>
-            {errors?.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              onClick={() => history.goBack()}
-            >
-              cancel
-            </Button>
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              type="submit"
-            >
-              save
-            </Button>
-          </Form>
-        </Container>
-      </Col>
-    </Row>
+      <Row>
+        <Col className="py-2 mx-auto text-center" md={6}>
+        <h2 className={`text-center mt-4 mb-4 ${styles.Title}`}>Change username</h2>
+          <Container className={appStyles.Content}>
+            <Form onSubmit={handleSubmit} className="my-2">
+              <Form.Group>
+                <Form.Label>Enter new username</Form.Label>
+                <Form.Control
+                  placeholder="username"
+                  type="text"
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                />
+              </Form.Group>
+              {errors?.username?.map((message, idx) => (
+                <Alert key={idx} variant="warning">
+                  {message}
+                </Alert>
+              ))}
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                type="submit"
+              >
+                Save
+              </Button>
+            </Form>
+          </Container>
+        </Col>
+      </Row>
   );
 };
 

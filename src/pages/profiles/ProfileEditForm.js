@@ -16,6 +16,7 @@ import {
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { useNotification } from "../../contexts/NotificationContext"; // Note
+import styles from "../../styles/PostCreateEditForm.module.css";
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -79,6 +80,7 @@ const ProfileEditForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <h2 className={`ml-3 mt-3 mb-2 ${styles.Title}`}>Edit profile</h2>
       <Container className={`py-2 p-0 p-md-2 text-center ${appStyles.Content}`}>
         <Form.Group>
           {image && (
@@ -96,7 +98,7 @@ const ProfileEditForm = () => {
               className={`${btnStyles.Button} ${btnStyles.Blue} btn my-auto`}
               htmlFor="image-upload"
             >
-              Change the image
+              Change image
             </Form.Label>
           </div>
           <Form.File
@@ -117,10 +119,10 @@ const ProfileEditForm = () => {
          className={`${btnStyles.Button} ${btnStyles.Blue}`}
          onClick={() => history.goBack()}
        >
-         cancel
+         Cancel
        </Button>
        <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-         save
+         Save
        </Button>
       </Container>
     </Form>
