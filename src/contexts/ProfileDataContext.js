@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { axiosReq } from "../api/axiosDefaults";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { createContext, useContext, useState } from "react";
+//import { axiosReq } from "../api/axiosDefaults";
+//import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 const ProfileDataContext = createContext();
 const SetProfileDataContext = createContext();
@@ -13,7 +13,7 @@ export const ProfileDataProvider = ({ children }) => {
     pageProfile: { results: [] },
   });
 
-  const currentUser = useCurrentUser();
+  //const currentUser = useCurrentUser();
 
 //this code causing the change in profile name
   // useEffect(() => {

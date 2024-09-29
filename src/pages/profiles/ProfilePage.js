@@ -9,7 +9,7 @@ import Asset from "../../components/Asset";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+//import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import {
@@ -29,14 +29,14 @@ function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePosts, setProfilePosts] = useState({ results: [] });
 
-  const currentUser = useCurrentUser();
+  //const currentUser = useCurrentUser();
   const { id } = useParams();
 
   const setProfileData = useSetProfileData();
   const { pageProfile } = useProfileData();
 
   const [profile] = pageProfile.results;
-  const is_owner = currentUser?.username === profile?.owner;
+  //const is_owner = currentUser?.username === profile?.owner;
 
   useEffect(() => {
     const fetchData = async () => {

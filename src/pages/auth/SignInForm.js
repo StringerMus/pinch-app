@@ -16,13 +16,13 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
-import { setTokenTimestamp } from "../../utils/utils";
+import { setTokenTimestamp } from "../../utils/utils";//
 import signinImage from "../../assets/signin.jpg";
-import { useNotification } from "../../contexts/NotificationContext"; // Note
+import { useNotification } from "../../contexts/NotificationContext";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
-  useRedirect('loggedIn') 
+  useRedirect('loggedIn')
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -30,7 +30,7 @@ function SignInForm() {
   });
   const { username, password } = signInData;
   const [errors, setErrors] = useState({});
-  const showNotification = useNotification(); // Get showNotification
+  const showNotification = useNotification();
 
   const history = useHistory();
   const handleSubmit = async (event) => {
@@ -39,9 +39,9 @@ function SignInForm() {
     try {
       const {data} = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user)
-      setTokenTimestamp(data);
-      history.push("/"); //changed from history.goBack(); for homepage
-      showNotification("Signed in successfully!"); // Show notification
+      setTokenTimestamp(data);//
+      history.goBack();
+      showNotification("Signed in successfully!");
     } catch (err) {
         setErrors(err.response?.data);
     }

@@ -7,15 +7,6 @@ import appStyles from "../../App.module.css";
 
 import signupImage from "../../assets/signup.jpg";
 
-/*import {
-  Form,
-  Button,
-  Image,
-  Col,
-  Row,
-  Container,
-  Alert,
-} from "react-bootstrap"; */
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -26,14 +17,14 @@ import Container from "react-bootstrap/Container";
 
 import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
-import { useSetCurrentUser } from "../../contexts/CurrentUserContext"; // Import to manage user state
-import { setTokenTimestamp } from "../../utils/utils"; // Import to set token timestamp
-import { useNotification } from "../../contexts/NotificationContext"; // Import notification context
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { setTokenTimestamp } from "../../utils/utils";
+import { useNotification } from "../../contexts/NotificationContext";
 
 const SignUpForm = () => {
   useRedirect('loggedIn')
-  const setCurrentUser = useSetCurrentUser(); // Set the current user
-  const showNotification = useNotification(); // Get showNotification
+  const setCurrentUser = useSetCurrentUser();
+  const showNotification = useNotification();
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",
@@ -55,20 +46,19 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      // Then log the user in
       const { data } = await axios.post("/dj-rest-auth/login/", {
         username,
-        password: password1, // Use the password set during sign-up
+        password: password1,
       });
 
       // Set the current user and token timestamp
       setCurrentUser(data.user);
       setTokenTimestamp(data);
-      showNotification("Signed up successfully!"); // Notify the user
+      showNotification("Signed up successfully!");
 
-      history.push("/"); //history.push("/signin");
+      history.push("/");
     } catch (err) {
-      console.log(err.response?.data); // Log the error response for debugging
+      console.log(err.response?.data);
       setErrors(err.response?.data);
     }
   };
