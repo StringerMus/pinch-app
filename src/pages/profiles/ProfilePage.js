@@ -109,7 +109,8 @@ function ProfilePage() {
 
   return (
     <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={1}></Col>
+      {/* Col to space left side of the page*/}
+      <Col lg={1}></Col>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
       <PopularItems mobile/>
         <Container className={appStyles.Content}>

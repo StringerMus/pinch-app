@@ -147,6 +147,12 @@ This font thick and has curves that look soft and playful so the brand does not 
 Typecase - 'Poppins'
 Looks very much like other san-serif fonts but it has a slight difference to differentiate Pinch to other brands as fonts such as 'Roboto' and 'Futura' are very popular amongst other brands.
 
+
+### Favicon
+![Logo](public/favicon.png)
+
+I have chosen this icon as the favicon for the site inspired by the pinch image on pinterest. It a finger tapping on a screen which would represent the use of the site, everything is a finger tap away from getting what the user needs.
+
 ## Wireframes
 
 * [Home/ Post listings](media/wireframe/home.JPG)
@@ -211,6 +217,11 @@ There also a prompt and a link for non-existing users to go to the sign up page 
 ![sign](media/signin-out/sign-in.JPG)
 
 
+### Notification
+A notification pops up at the bottom of the screen to notify users when they have logged in and signed up successfully.
+
+![sign](media/signin-out/message.JPG)
+
 ### Responsive
 When the screen width is reduced less than 768px, the picture reduces and only form and sign in page link is visible.
 
@@ -238,81 +249,123 @@ The home page does not paginate, the page will continue loading posts and until 
 
 ![home](media/home/home.JPG)
 
-# Responsive
-If the width of the screen is less than 768px, this change the layout of the page. The popular items section will move under the search bar and it will change to a list of three.
+### Responsive
+If the width of the screen is less than 768px, this change the layout of the page. The page turns into a single column - The posts details moves underneath the image and the popular items section will move under the search bar and it will change to a list of three.
 
-### Posts
+## Posts
 
-#### Post detail
-Profile
-post owner 
-- edit
-- delete
+### Post detail
+Each item listing have their own detail view for users to have a closer look and also view the comments.
+* Owners of posts will be able to edit or delete their own posts by clicking the three dots underneath the item image to open a sub menu.
+* The edit button will take the owner to the edit listing page.
+* Logged in user will be able to post a comment and also like the posts.
+* The owner profile and name are linked to the owners profile page.
+* The Popular Items column also appears next to the post details.
 
-Like
- - counters
- - change colours
- - can't like own and logged cant like own.
+![posts](media/posts/posts.JPG)
 
-#### Comment
-infinite scroll
-edit/ delete
-Confirmation message
-comment counters
+### Like
+Only logged in users can like posts but owners of posts will be unable to like their own listings and a overlay message will come up for these users to notify them.
+ - The like counters will go up when liked and down if unliked.
+ - The heart icon will also change colours to notify users if they have a liked a listing.
 
-logged out
-- cant like or comment
+### Comment
+The comment form appears underneath post details, only logged in users can post comments on item listings. When comments are posted, it shows the commentors name and profile image, the comment and how long ago the comment was posted.
+- Comment owners can edit or delete their own comments, theres a three dot drop-down that opens up a sub menu.
+- A notification pops up at the bottom of the screen to notify users when they have posted, edited or deleted a comment.
+- The comment counter will go up or down depending on the number of comment the item listing has.
+- The comment section also has the infinite scroll feature.
 
-responsive
+![posts](media/posts/comments.JPG)
+
+### Responsive
+When the screen width becomes less than 768px, the page becomes a single column and like other pages - The post detail moves under the image and the Popular Items moves to the top of the page as a list of 3.
 
 
+## List item
+This is the page where user can list an item on Pinch by filling out Create listing form.
 
-### List item
-Upload image
-- file size
-- image size
+* An image will need to be uploaded, informing users the max file size is 2mb and max height and width is 4096px - but as the max file size 2mb, it is unlikey images dimensions would exceed this.
 
-#### Form
-Required fields
+### Form
+There are fields the form requires for a user to be able to successfully list an item
 - item name
 - image
 - email address
 - location
+If these are not filled correctly, notifications come underneath the form and image box for the image error.
+- The price field requires a figure equal to zero or above and no more than 3 decimal places.
 
-Not required
-- Price - As this is email requests, price can be negotiated with owner and default value will be 0
-- Catergory - Default value will be other, really to di with filtering
+The price and category fields do not particularly require to be filled in
+- Price - As lending requests are handled by email between an owner and requestor, price can be negotiated with owner and default value will be 0 if not filled in.
+- Catergory - This field is more for filtering purposes, the default value will be 'other'.
 
-Price
-- no negative numbers
+A notification will pop up at the bottom of the screen when a user successfully lists an item.
 
-Invalid feedback at bottom of form
+![post_create](media/post_create_edit/post_create.JPG)
 
-Confirmation message
-
-Popular items
-reponsiveness
-
-
-### Post Edit form
-Same as post create form
-- fields already filled in
+### Reponsiveness
+When the screen width becomes less than 768px, page turn into a single column with the image upload section at the top and the form underneath.
 
 
-### Liked
-Filter liked posts by users
-Users can refer back to items, use it like saved items.
-reponsiveness
+## Edit listing form
+When an owner clicks the edit icon on the post details, they are taken to the Edit listing page for that post. The image and form fields will be already filled in with the posts existing details.
 
-### Profile page
-Profile info
-- Name
-- Number of listings
-- Edit
-    Change profile image
-    Change username
-    Change password
+The functionality and form requirements of the Edit listing page and form is the same as the Post listing. When the form is submitted, the item listings details are updated and a notification appears to confirm successful action.
 
-Popular items
+![post_edit](media/post_create_edit/post_edit.JPG)
 
-reponsiveness
+## Liked
+This page is only available for logged in users, the page filters all listing to the posts liked by the user and if there are no liked items, the page will notify the user no results were found and to like a post.
+
+![liked](media/liked/liked.JPG)
+![liked](media/liked/liked2.JPG)
+
+## Reponsiveness
+Just like all other pages with posts when the screen width becomes less than 768px, the post detail moves under the image.
+
+## Profile page
+The page contains all information on the profile owner in terms of username, profile image, number of listings posted by the user and the list if these items. The page also has the infinite scroll feature, the page will continue loading posts until the last post is reached.
+
+### Edit
+This will only be available to the profile. If the three dots are clicked, a dropdown of sub menu appears listing edit profile, change username and change password.
+Popular items appear on the side of the page also.
+
+![profile](media/profile/profile.JPG)
+
+
+Edit profile - Takes the user to a page where users can change their profile image.
+![profile](media/profile/profile_edit.JPG)
+
+
+Change username - A page where a user can fill a form to change their username - the username has to be unique.<br>
+![profile](media/profile/username.JPG)
+
+
+Change password - A page is loaded for the user to fill a form to update their password and confirm. The password field follows the same requirements as the sign up form.
+![profile](media/profile/password.JPG)
+
+### Reponsiveness
+When the screen becomes less than 768px, the page turn into a single column with the popular posts moving to the top as a list of 3. The profile image moves to the top of the profile name and number of listings. Just like the other pages, the post details move under the posts images.
+
+
+## Defensive Design
+
+### Redirection
+The useRedirect hook is in place so user's can't access pages where they have not been appropeiately authenticated to prevent unauthorised access.
+
+### 404 page
+If an invalid url is input, a custom 404 page will appear for the user encouraging the user to go back or vist an existing page.
+
+![profile](media/home/404.JPG)
+
+
+# Future Enhancements
+* Saved items - Give users the ability save items they are interested in so it can recorded as a list to refer back when needed, at the moment users can use the liked page to be able to access items they are interested in to refer back to.
+
+* Email request - Allow users to put in a request to borrow via a button on a post. This will prompt a form for requestees to fill out important information like date of pickup, number of days and contact email.
+
+* A calendar - This can show interested users the days the item is available to rent to ensure items aren't being requested whilst they are unavailable.
+
+
+# Testing
