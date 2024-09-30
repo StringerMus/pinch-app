@@ -159,3 +159,123 @@ Looks very much like other san-serif fonts but it has a slight difference to dif
 * [Update password](media/wireframe/password.JPG)
 * [Sign up](media/wireframe/sign-up.JPG)
 * [Sign in](media/wireframe/sign-in.JPG)
+
+
+# Features
+### Navbar
+
+#### Logo
+
+#### Logged in
+
+#### Logged out
+
+#### Burger
+
+
+
+### Sign-in/ sign-up
+
+#### Sign-in
+
+#### Sign-up
+
+
+
+### Home/ Post listings
+
+#### Header
+
+#### Search-bar
+- username, item name, category, location
+
+#### listings
+Profile 
+like
+- counter
+- Unable to like own
+comments
+- counter
+
+Popular posts
+
+Infinite scroll
+
+logged out
+- cant like or comment
+
+responsive
+
+
+
+### Posts
+
+#### Post detail
+Profile
+post owner 
+- edit
+- delete
+Like
+ - same as post listings
+
+#### Comment
+infinite scroll
+edit/ delete
+Confirmation message
+
+logged out
+- cant like or comment
+
+responsive
+
+
+
+### List item
+Upload image
+- file size
+- image size
+
+#### Form
+Required fields
+- item name
+- image
+- email address
+- location
+
+Not required
+- Price - As this is email requests, price can be negotiated with owner and default value will be 0
+- Catergory - Default value will be other, really to di with filtering
+
+Price
+- no negative numbers
+
+Invalid feedback at bottom of form
+
+Confirmation message
+
+Popular items
+reponsiveness
+
+
+### Post Edit form
+Same as post create form
+- fields already filled in
+
+
+### Liked
+Filter liked posts by users
+Users can refer back to items, use it like saved items.
+reponsiveness
+
+### Profile page
+Profile info
+- Name
+- Number of listings
+- Edit
+    Change profile image
+    Change username
+    Change password
+
+Popular items
+
+reponsiveness
