@@ -114,14 +114,48 @@ For the website to be able to fulfill its goal of creating profiles, listing and
 When design is involved I always go to Pinterest for inspiration, I have looked at different layouts and colours that I could apply to this project for a coherent and positive user experience on Pinch.
 
 ### Pinterest
+The two images below were a source of inspiration in terms of branding. I had imagined using pastel pink for the colour and looking through colours that would compliment pink, royal green was perfect for the mood and look for the site especially not to make the site look like it is targeting a female audience.
+
+![branding](media/pinterest/branding.jpg) ![logo](media/pinterest/logo.JPG)
+![colours](media/pinterest/colours.jpg)
 
 
-### Colour Psycology
+### Colour Psycpsychology
+I have looked at the colour of pink and green, I found the following by Adobe
 
-### airbnb
-[airbnb](https://www.airbnb.co.uk/)
+* Green -  Green color is connected to health because it represents renewal and life. It can also represent safety or permission.
+
+* Pink - Pink is found to provide a sense of calm. That calmness brings feelings of relaxation and contentment. Pink is a soothing color, not a rousing one.
+
+These are important this to consider for Pinch. 
+ * Trust - This will be an important aspect to the site. Lenders would have to trust lendees with their item and pay as promised. Lendees will need to trust lenders items are what they promise.
+ * Renewal - This service is eco-friendly as existing items are being re-used.
+
+### Airbnb
+I have looked at [Airbnb](https://www.airbnb.co.uk/) because I realise the service is similar to Pinch, airbnb are very well established and have done well to provide good user experience to their renters and rentees.
 
 ### Fat Llama
-[Fat Llama](https://fatllama.com/uk)
+I have also found an existing site called [Fat Llama](https://fatllama.com/uk) to see what a potential competitor does and what they do well to take inspiration from and what can be improved.
+
+
+### Font
+Couple of fonts have been looked at but these two were chosen;
+
+Title and logo - 'Tilt Warp'
+This font thick and has curves that look soft and playful so the brand does not look to serious.
+
+Typecase - 'Poppins'
+Looks very much like other san-serif fonts but it has a slight difference to differentiate Pinch to other brands as fonts such as 'Roboto' and 'Futura' are very popular amongst other brands.
 
 ## Wireframes
+
+* [Home/ Post listings](media/wireframe/home.JPG)
+* [Post page](media/wireframe/post.JPG)
+* [Listing create/ edit form](media/wireframe/list_create_edit.JPG)
+* [Liked](media/wireframe/liked.JPG)
+* [Profile page](media/wireframe/profile_page.JPG)
+* [Edit profile](media/wireframe/edit_profile.JPG)
+* [Change username](media/wireframe/change_username.JPG)
+* [Update password](media/wireframe/password.JPG)
+* [Sign up](media/wireframe/sign-up.JPG)
+* [Sign in](media/wireframe/sign-in.JPG)
