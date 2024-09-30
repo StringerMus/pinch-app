@@ -16,7 +16,7 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
-import { setTokenTimestamp } from "../../utils/utils";//
+import { setTokenTimestamp } from "../../utils/utils";
 import signinImage from "../../assets/signin.jpg";
 import { useNotification } from "../../contexts/NotificationContext";
 
@@ -39,7 +39,7 @@ function SignInForm() {
     try {
       const {data} = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user)
-      setTokenTimestamp(data);//
+      setTokenTimestamp(data);
       history.goBack();
       showNotification("Signed in successfully!");
     } catch (err) {
