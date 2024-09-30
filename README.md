@@ -162,51 +162,84 @@ Looks very much like other san-serif fonts but it has a slight difference to dif
 
 
 # Features
-### Navbar
+## Navbar
+The navbar appears on all pages at all times. Its the tool for user to navigate through the site. The logo is also a link, when clicked it will take the user back to the homepage.
 
-#### Logo
+### Logged out
+The navbar links change depending on a users login status. If a user is not logged in they will only see;
+- Home
+- Sign in
+- Sign up
 
-#### Logged in
+![navbar](media/navbar/nav.JPG)
 
-#### Logged out
+### Logged in
+But if they are Logged in, they will see;
+- Home
+- List item
+- Liked
+- Profile page
+- Sign out
 
-#### Burger
-
-
-
-### Sign-in/ sign-up
-
-#### Sign-in
-
-#### Sign-up
-
-
-
-### Home/ Post listings
-
-#### Header
-
-#### Search-bar
-- username, item name, category, location
-
-#### listings
-Profile 
-like
-- counter
-- Unable to like own
-comments
-- counter
-
-Popular posts
-
-Infinite scroll
-
-logged out
-- cant like or comment
-
-responsive
+![navbar](media/navbar/nav3.JPG)
 
 
+### Responsive
+The nav condenses into a burger menu when the screen width shrinks less than 768px. When a user clicks the burger it opens up a dropdown of the links.
+
+![navbar](media/navbar/nav4.JPG)
+
+
+## Sign-up/ sign-in
+
+### Sign-up
+The sign-up contains the sign up form and a picture advertising the site showing what could be available.
+The form is simple, a user just needs to create a unique username, a password not too simple and confirm the password to sign up. 
+If the form does not meet the username or password criteria, this will be fed back to the user.
+
+There is a prompt and a link for existing users to go to the sign in page if they visit the sign-up page to login. 
+
+![sign](media/signin-out/sign-up.JPG)
+
+
+### Sign-in
+The sign-in page contains the sign in form and a different picture of a person using a tool which could also be available on the site.
+The sign in form asks users for the username and password to login. If the fields do not match an existing users details, the user will be unable to login.
+
+There also a prompt and a link for non-existing users to go to the sign up page if they visit the sign-in page.
+
+![sign](media/signin-out/sign-in.JPG)
+
+
+### Responsive
+When the screen width is reduced less than 768px, the picture reduces and only form and sign in page link is visible.
+
+
+
+## Home/ Post listings
+The home page lists all items posted by users in order of recent created date. Users can start scrolling down through the list of posts and view their details.
+
+Before the item listings, there are introductory messages to explain to new users what the website is about and also provides a step by step of how to utlise the site.
+
+There is a search bar also available if the user already knows what they are looking to perform a quick search instead of scrolling the site. Users are able to search for items via the owner, item name, category and location. It has only been limited to these fields as these are more finer search fields - price and description might not come refine the search enough, especially description as same words can be applied to multiple items.
+
+
+### Listings
+The listings on the home page lists all items as cards that contains items details for user to view, item owner, like and comment icons and counters.
+* The owner profile and name are linked to the owners profile page.
+* Logged in users can like posts on the listings and item owners cannot like their own item.
+* Clicking the item image and comments icon will take the user to items detail page.
+
+### Popular posts
+This feature appears on the right hand side of the page and it is lists 5 of the most popular items by the number of likes. This wil automatically update depending on the like counters on posts.
+
+### Infinite scroll
+The home page does not paginate, the page will continue loading posts and until the end of the listings is reached.
+
+![home](media/home/home.JPG)
+
+# Responsive
+If the width of the screen is less than 768px, this change the layout of the page. The popular items section will move under the search bar and it will change to a list of three.
 
 ### Posts
 
@@ -215,13 +248,17 @@ Profile
 post owner 
 - edit
 - delete
+
 Like
- - same as post listings
+ - counters
+ - change colours
+ - can't like own and logged cant like own.
 
 #### Comment
 infinite scroll
 edit/ delete
 Confirmation message
+comment counters
 
 logged out
 - cant like or comment

@@ -53,7 +53,9 @@ function PostsPage({ message, filter = "" }) {
 
   return (
     <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={9}>
+      <Col className="py-2 p-0 p-lg-2" lg={1}>
+      </Col>
+      <Col className="py-2 p-0 p-lg-2" lg={8}>
         {/* Conditionally render the welcome text and steps */}
         {!likedPage && (
           <>
