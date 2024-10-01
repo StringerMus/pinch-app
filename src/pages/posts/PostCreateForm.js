@@ -20,11 +20,12 @@ import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
-import { useNotification } from "../../contexts/NotificationContext"; // Import the notification hook
+import { useNotification } from "../../contexts/NotificationContext";
 
 function PostCreateForm() {
   useRedirect("loggedOut")
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false); // Add isSubmitting state
 
   const [postData, setPostData] = useState({
     item_name: "",
@@ -38,7 +39,7 @@ function PostCreateForm() {
   const { item_name, description, category, price, location, contact_email, image } = postData;
   const imageInput = useRef(null)
   const history = useHistory()
-  const showNotification = useNotification(); // Get the showNotification function
+  const showNotification = useNotification();
 
   const handleChange = (event) => {
     setPostData({
@@ -59,6 +60,7 @@ function PostCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true); // Disable submit button after submission
     const formData = new FormData();
 
     formData.append("item_name", item_name);
@@ -71,13 +73,14 @@ function PostCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
-      showNotification("Listing created successfully!"); // Trigger notification here
+      showNotification("Listing created successfully!");
       history.push(`/listings/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
+      setIsSubmitting(false); // Re-enable submit button if an error occurs
     }
   };
 
@@ -166,8 +169,11 @@ function PostCreateForm() {
       >
         Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        Post
+      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`}
+      type="submit"
+      disabled={isSubmitting} // Disable the button while submitting
+      >
+        {isSubmitting ? "Posting..." : "Post"} {/* Change button text while submitting */}
       </Button>
     {errors.contact_email?.map((message, idx) => (
       <Alert key={idx} variant="warning">

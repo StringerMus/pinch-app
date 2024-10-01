@@ -7,12 +7,13 @@ import InputGroup from "react-bootstrap/InputGroup";
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
-import { useNotification } from "../../contexts/NotificationContext"; // Note
+import { useNotification } from "../../contexts/NotificationContext";
 
 function CommentCreateForm(props) {
   const { post, setPost, setComments, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
-  const showNotification = useNotification(); // Get showNotification from context
+  const [loading, setLoading] = useState(false);  // New loading state
+  const showNotification = useNotification();
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -20,6 +21,7 @@ function CommentCreateForm(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);  // Disable the button
     try {
       const { data } = await axiosRes.post("/comments/", {
         content,
@@ -38,9 +40,11 @@ function CommentCreateForm(props) {
         ],
       }));
       setContent("");
-      showNotification("Comment posted successfully!"); // Show notification on success
+      showNotification("Comment posted successfully!");
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);  // Re-enable the button
     }
   };
 
@@ -58,15 +62,16 @@ function CommentCreateForm(props) {
             value={content}
             onChange={handleChange}
             rows={2}
+            disabled={loading}  // Disable textarea when loading
           />
         </InputGroup>
       </Form.Group>
       <button
         className={`${styles.Button} btn d-block ml-auto`}
-        disabled={!content.trim()}
+        disabled={!content.trim() || loading}  // Disable button when loading or no content
         type="submit"
       >
-        post
+        Post
       </button>
     </Form>
   );

@@ -33,6 +33,7 @@ const SignUpForm = () => {
   const { username, password1, password2 } = signUpData;
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);  // New loading state
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -44,6 +45,7 @@ const SignUpForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);  // Disable the button
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       const { data } = await axios.post("/dj-rest-auth/login/", {
@@ -51,7 +53,6 @@ const SignUpForm = () => {
         password: password1,
       });
 
-      // Set the current user and token timestamp
       setCurrentUser(data.user);
       setTokenTimestamp(data);
       showNotification("Signed up successfully!");
@@ -60,6 +61,8 @@ const SignUpForm = () => {
     } catch (err) {
       console.log(err.response?.data);
       setErrors(err.response?.data);
+    } finally {
+      setLoading(false);  // Re-enable the button
     }
   };
 
@@ -79,6 +82,7 @@ const SignUpForm = () => {
                 name="username"
                 value={username}
                 onChange={handleChange}
+                disabled={loading}  // Disable input when loading
               />
             </Form.Group>
             {errors.username?.map((message, idx) => (
@@ -96,6 +100,7 @@ const SignUpForm = () => {
                 name="password1"
                 value={password1}
                 onChange={handleChange}
+                disabled={loading}  // Disable input when loading
               />
             </Form.Group>
             {errors.password1?.map((message, idx) => (
@@ -113,6 +118,7 @@ const SignUpForm = () => {
                 name="password2"
                 value={password2}
                 onChange={handleChange}
+                disabled={loading}  // Disable input when loading
               />
             </Form.Group>
             {errors.password2?.map((message, idx) => (
@@ -124,6 +130,7 @@ const SignUpForm = () => {
             <Button
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
               type="submit"
+              disabled={loading}  // Disable button when loading
             >
               Sign up
             </Button>
