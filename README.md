@@ -589,8 +589,16 @@ If the price field is blank the default value is 0.00, the default value for cat
 ## Validators
 
 ### HTML
+All pages urls have gone through the [W3C HTML validator](https://validator.w3.org/) and no errors were found.
+
+![html](media/validator/html_val.JPG)
+
+There were errors for the index.html, but these were errors from default code provided in the html.
 
 ### CSS
+All css module pages have gone through the [W3C CSS validator](https://jigsaw.w3.org/css-validator/) and no errors were found.
+
+![html](media/validator/css_val.JPG)
 
 ## JS
 
