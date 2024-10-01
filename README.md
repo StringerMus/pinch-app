@@ -359,6 +359,16 @@ If an invalid url is input, a custom 404 page will appear for the user encouragi
 
 ![profile](media/home/404.JPG)
 
+## Components
+There are components that have been reused throughout the site;
+* Asset - This creates the loading spinner.
+* Avatar - Where the profile name and picture is required.
+* MoreDropdown - Creates the dropdowns on post, comment and profile edit/ delete.
+* Navbar - The navbar appears on all pages at all times for user to navigate the site with.
+* NotFound - Any time a user enters an invalid url, the custom 404 page will appear.
+* CurrentUserContext - Confirms users login status and what their permissions.
+* NotificationContext - Notification to confirm successful user actions.
+
 
 # Testing
 
@@ -600,19 +610,9 @@ All css module pages have gone through the [W3C CSS validator](https://jigsaw.w3
 
 ![html](media/validator/css_val.JPG)
 
-## JS
+### JS
 All js files were passed through [jshint](https://jshint.com/), a tool that detects errors and potential problems in your JavaScript code.
-
-
-## Components
-Asset
-Avatar
-MoreDropdown
-Navbar
-NotFound
-
-
-
+No errors detected.
 
 
 # Future Enhancements
@@ -621,7 +621,6 @@ NotFound
 * Email request - Allow users to put in a request to borrow via a button on a post. This will prompt a form for requestees to fill out important information like date of pickup, number of days and contact email.
 
 * A calendar - This can show interested users the days the item is available to rent to ensure items aren't being requested whilst they are unavailable.
-
 
 
 # Deployment
