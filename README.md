@@ -601,6 +601,8 @@ All css module pages have gone through the [W3C CSS validator](https://jigsaw.w3
 ![html](media/validator/css_val.JPG)
 
 ## JS
+All js files were passed through [jshint](https://jshint.com/), a tool that detects errors and potential problems in your JavaScript code.
+
 
 ## Components
 Asset

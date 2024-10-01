@@ -16,7 +16,7 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import { useNotification } from "../../contexts/NotificationContext"; // Note
+import { useNotification } from "../../contexts/NotificationContext";
 import styles from "../../styles/PostCreateEditForm.module.css";
 
 const UsernameForm = () => {
@@ -28,7 +28,7 @@ const UsernameForm = () => {
 
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-  const showNotification = useNotification(); // Get showNotification from context
+  const showNotification = useNotification();
 
   useEffect(() => {
     if (currentUser?.profile_id?.toString() === id) {
@@ -48,10 +48,9 @@ const UsernameForm = () => {
         ...prevUser,
         username,
       }));
-      showNotification("Username updated successfully!"); // Show notification
+      showNotification("Username updated successfully!");
       history.goBack();
     } catch (err) {
-      console.log(err);
       setErrors(err.response?.data);
     }
   };

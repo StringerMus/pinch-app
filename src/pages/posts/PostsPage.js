@@ -38,17 +38,16 @@ function PostsPage({ message, filter = "" }) {
         setPosts(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
       }
     };
 
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchPosts();
-    }, 400)
+    }, 400);
     return () => {
-      clearTimeout(timer)
-    }
+      clearTimeout(timer);
+    };
   }, [filter, query, pathname, currentUser]); 
 
   return (

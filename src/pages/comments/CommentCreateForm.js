@@ -12,7 +12,7 @@ import { useNotification } from "../../contexts/NotificationContext";
 function CommentCreateForm(props) {
   const { post, setPost, setComments, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(false);  // New loading state
+  const [loading, setLoading] = useState(false);
   const showNotification = useNotification();
 
   const handleChange = (event) => {
@@ -21,7 +21,7 @@ function CommentCreateForm(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);  // Disable the button
+    setLoading(true);
     try {
       const { data } = await axiosRes.post("/comments/", {
         content,
@@ -42,9 +42,8 @@ function CommentCreateForm(props) {
       setContent("");
       showNotification("Comment posted successfully!");
     } catch (err) {
-      console.log(err);
     } finally {
-      setLoading(false);  // Re-enable the button
+      setLoading(false);
     }
   };
 
@@ -62,13 +61,13 @@ function CommentCreateForm(props) {
             value={content}
             onChange={handleChange}
             rows={2}
-            disabled={loading}  // Disable textarea when loading
+            disabled={loading}
           />
         </InputGroup>
       </Form.Group>
       <button
         className={`${styles.Button} btn d-block ml-auto`}
-        disabled={!content.trim() || loading}  // Disable button when loading or no content
+        disabled={!content.trim() || loading}
         type="submit"
       >
         Post

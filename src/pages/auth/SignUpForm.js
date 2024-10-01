@@ -22,7 +22,7 @@ import { setTokenTimestamp } from "../../utils/utils";
 import { useNotification } from "../../contexts/NotificationContext";
 
 const SignUpForm = () => {
-  useRedirect('loggedIn')
+  useRedirect('loggedIn');
   const setCurrentUser = useSetCurrentUser();
   const showNotification = useNotification();
   const [signUpData, setSignUpData] = useState({
@@ -33,7 +33,7 @@ const SignUpForm = () => {
   const { username, password1, password2 } = signUpData;
 
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);  // New loading state
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -45,7 +45,7 @@ const SignUpForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);  // Disable the button
+    setLoading(true);
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       const { data } = await axios.post("/dj-rest-auth/login/", {
@@ -59,10 +59,9 @@ const SignUpForm = () => {
 
       history.push("/");
     } catch (err) {
-      console.log(err.response?.data);
       setErrors(err.response?.data);
     } finally {
-      setLoading(false);  // Re-enable the button
+      setLoading(false);
     }
   };
 
@@ -82,7 +81,7 @@ const SignUpForm = () => {
                 name="username"
                 value={username}
                 onChange={handleChange}
-                disabled={loading}  // Disable input when loading
+                disabled={loading}
               />
             </Form.Group>
             {errors.username?.map((message, idx) => (
@@ -100,7 +99,7 @@ const SignUpForm = () => {
                 name="password1"
                 value={password1}
                 onChange={handleChange}
-                disabled={loading}  // Disable input when loading
+                disabled={loading}
               />
             </Form.Group>
             {errors.password1?.map((message, idx) => (
@@ -118,7 +117,7 @@ const SignUpForm = () => {
                 name="password2"
                 value={password2}
                 onChange={handleChange}
-                disabled={loading}  // Disable input when loading
+                disabled={loading}
               />
             </Form.Group>
             {errors.password2?.map((message, idx) => (
@@ -130,7 +129,7 @@ const SignUpForm = () => {
             <Button
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
               type="submit"
-              disabled={loading}  // Disable button when loading
+              disabled={loading}
             >
               Sign up
             </Button>

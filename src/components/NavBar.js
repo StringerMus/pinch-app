@@ -27,7 +27,6 @@ const NavBar = () => {
       removeTokenTimestamp();
       showNotification("Signed out successfully!");
     } catch (err) {
-      console.log(err);
     }
   };
 

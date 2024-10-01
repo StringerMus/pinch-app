@@ -4,12 +4,12 @@ import Form from "react-bootstrap/Form";
 import { axiosRes } from "../../api/axiosDefaults";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
-import { useNotification } from "../../contexts/NotificationContext"; // Note
+import { useNotification } from "../../contexts/NotificationContext";
 
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
   const [formContent, setFormContent] = useState(content);
-  const showNotification = useNotification(); // Get showNotification
+  const showNotification = useNotification();
 
   const handleChange = (event) => {
     setFormContent(event.target.value);
@@ -34,9 +34,8 @@ function CommentEditForm(props) {
         }),
       }));
       setShowEditForm(false);
-      showNotification("Comment edited successfully!"); // Show notification
+      showNotification("Comment edited successfully!");
     } catch (err) {
-      console.log(err);
     }
   };
 

@@ -23,9 +23,9 @@ import { useRedirect } from "../../hooks/useRedirect";
 import { useNotification } from "../../contexts/NotificationContext";
 
 function PostCreateForm() {
-  useRedirect("loggedOut")
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false); // Add isSubmitting state
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [postData, setPostData] = useState({
     item_name: "",
@@ -37,8 +37,8 @@ function PostCreateForm() {
     image: "",  
   });
   const { item_name, description, category, price, location, contact_email, image } = postData;
-  const imageInput = useRef(null)
-  const history = useHistory()
+  const imageInput = useRef(null);
+  const history = useHistory();
   const showNotification = useNotification();
 
   const handleChange = (event) => {
@@ -60,7 +60,7 @@ function PostCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsSubmitting(true); // Disable submit button after submission
+    setIsSubmitting(true);
     const formData = new FormData();
 
     formData.append("item_name", item_name);
@@ -76,11 +76,10 @@ function PostCreateForm() {
       showNotification("Listing created successfully!");
       history.push(`/listings/${data.id}`);
     } catch (err) {
-      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
-      setIsSubmitting(false); // Re-enable submit button if an error occurs
+      setIsSubmitting(false);
     }
   };
 
@@ -171,9 +170,9 @@ function PostCreateForm() {
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`}
       type="submit"
-      disabled={isSubmitting} // Disable the button while submitting
+      disabled={isSubmitting}
       >
-        {isSubmitting ? "Posting..." : "Post"} {/* Change button text while submitting */}
+        {isSubmitting ? "Posting..." : "Post"}
       </Button>
     {errors.contact_email?.map((message, idx) => (
       <Alert key={idx} variant="warning">

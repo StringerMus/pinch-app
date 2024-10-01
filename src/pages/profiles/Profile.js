@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Avatar from '../../components/Avatar';
 
 const Profile = (props) => {
-    const {profile, mobile, imageSize=55} = props
-    const {id, image, owner} = profile
+    const {profile, mobile, imageSize=55} = props;
+    const {id, image, owner} = profile;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;

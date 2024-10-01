@@ -8,7 +8,7 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 import { axiosRes } from "../../api/axiosDefaults";
 
 import CommentEditForm from "./CommentEditForm";
-import { useNotification } from "../../contexts/NotificationContext"; // Note
+import { useNotification } from "../../contexts/NotificationContext";
 
 const Comment = (props) => {
   const {
@@ -25,12 +25,12 @@ const Comment = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const [showEditForm, setShowEditForm] = useState(false);
-  const showNotification = useNotification(); // Get showNotification
+  const showNotification = useNotification();
 
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/comments/${id}/`);
-      showNotification("Comment deleted successfully!"); // Show notification
+      showNotification("Comment deleted successfully!");
       setPost((prevPost) => ({
         results: [
           {

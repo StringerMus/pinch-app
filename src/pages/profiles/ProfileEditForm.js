@@ -15,7 +15,7 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import { useNotification } from "../../contexts/NotificationContext"; // Note
+import { useNotification } from "../../contexts/NotificationContext";
 import styles from "../../styles/PostCreateEditForm.module.css";
 
 const ProfileEditForm = () => {
@@ -24,7 +24,7 @@ const ProfileEditForm = () => {
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
-  const showNotification = useNotification(); // Get showNotification from context
+  const showNotification = useNotification();
 
   const [profileData, setProfileData] = useState({
     name: "",
@@ -43,7 +43,6 @@ const ProfileEditForm = () => {
           const { name, content, image } = data;
           setProfileData({ name, content, image });
         } catch (err) {
-          console.log(err);
           history.push("/");
         }
       } else {
@@ -70,10 +69,9 @@ const ProfileEditForm = () => {
         ...currentUser,
         profile_image: data.image,
       }));
-      showNotification("Profile edited successfully!"); // Show notification
+      showNotification("Profile edited successfully!");
       history.goBack();
     } catch (err) {
-      console.log(err);
       setErrors(err.response?.data);
     }
   };

@@ -17,7 +17,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 
-import PopularItems from "./PopularItems"; // Importing PopularItems component
+import PopularItems from "./PopularItems";
 
 function PostPage() {
     const {id} = useParams();
@@ -35,9 +35,8 @@ function PostPage() {
               axiosReq.get(`/comments/?post=${id}`)
             ]);
             setPost({ results: [post] });
-            setComments(comments)
+            setComments(comments);
           } catch (err) {
-            console.log(err);
           }
         };
 

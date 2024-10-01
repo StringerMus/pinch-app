@@ -14,7 +14,7 @@ import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import { useNotification } from "../../contexts/NotificationContext"; // Import the notification context
+import { useNotification } from "../../contexts/NotificationContext";
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
@@ -30,21 +30,19 @@ function PostEditForm() {
   });
   const { item_name, description, category, price, location, contact_email, image } = postData;
 
-  const imageInput = useRef(null)
-  const history = useHistory()
+  const imageInput = useRef(null);
+  const history = useHistory();
   const { id } = useParams();
-  const showNotification = useNotification(); // Get showNotification from context
+  const showNotification = useNotification();
 
     useEffect(() => {
         const handleMount = async () => {
             try {
                 const {data} = await axiosReq.get(`/posts/${id}/`);
                 const {item_name, description, category, price, location, contact_email, image, is_owner} = data;
-                console.log(data)
                 
                 is_owner ? setPostData({item_name, description, category, price, location, contact_email, image}) : history.push('/');
             } catch(err) {
-                console.log(err);
             }
         };
 
@@ -85,11 +83,9 @@ function PostEditForm() {
 
     try {
       await axiosReq.put(`/posts/${id}/`, formData);
-      showNotification("Listing edited successfully!"); // Show notification on success
+      showNotification("Listing edited successfully!");
       history.push(`/listings/${id}`);
-      console.log(id);
     } catch (err) {
-      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -265,6 +261,5 @@ function PostEditForm() {
     </Form>
   );
 }
-//Edit form code
 
 export default PostEditForm;

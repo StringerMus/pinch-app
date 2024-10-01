@@ -13,14 +13,14 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import { useNotification } from "../../contexts/NotificationContext"; // Note
+import { useNotification } from "../../contexts/NotificationContext";
 import styles from "../../styles/PostCreateEditForm.module.css";
 
 const UserPasswordForm = () => {
   const history = useHistory();
   const { id } = useParams();
   const currentUser = useCurrentUser();
-  const showNotification = useNotification(); // Get showNotification 
+  const showNotification = useNotification();
 
   const [userData, setUserData] = useState({
     new_password1: "",
@@ -39,7 +39,6 @@ const UserPasswordForm = () => {
 
   useEffect(() => {
     if (currentUser?.profile_id?.toString() !== id) {
-      // redirect user if they are not the owner of this profile
       history.push("/");
     }
   }, [currentUser, history, id]);
@@ -48,10 +47,9 @@ const UserPasswordForm = () => {
     event.preventDefault();
     try {
       await axiosRes.post("/dj-rest-auth/password/change/", userData);
-      showNotification("Password changed successfully!"); // Show notification
+      showNotification("Password changed successfully!");
       history.goBack();
     } catch (err) {
-      console.log(err);
       setErrors(err.response?.data);
     }
   };

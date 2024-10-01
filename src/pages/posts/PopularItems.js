@@ -31,7 +31,6 @@ const PopularItems = ({ mobile }) => {
         setPopularPosts(sortedPosts.slice(0, 5));
         setHasLoaded(true);
       } catch (err) {
-        console.log("Error fetching posts:", err);
       }
     };
 
