@@ -82,7 +82,7 @@ const NavBar = () => {
   );
 
   return (
-    <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">
+    <Navbar expanded={expanded} className={styles.NavBar} expand="lg" fixed="top">
       <Container>
 
         <NavLink to="/">
@@ -107,7 +107,6 @@ const NavBar = () => {
             >
               <i className="fa-solid fa-house-chimney"></i> Home
             </NavLink>
-            {/* create a lisitng */}
             {currentUser && addPostIcon}
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>

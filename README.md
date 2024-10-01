@@ -250,7 +250,7 @@ The home page does not paginate, the page will continue loading posts and until 
 ![home](media/home/home.JPG)
 
 ### Responsive
-If the width of the screen is less than 768px, this change the layout of the page. The page turns into a single column - The posts details moves underneath the image and the popular items section will move under the search bar and it will change to a list of three.
+If the width of the screen is less than 768px, this change the layout of the page. The page turns into a single column - The posts details moves underneath the image. After the width reduces less than 992px, the popular items section will move under the search bar and it will change to a list of three.
 
 ## Posts
 
@@ -279,7 +279,7 @@ The comment form appears underneath post details, only logged in users can post 
 ![posts](media/posts/comments.JPG)
 
 ### Responsive
-When the screen width becomes less than 768px, the page becomes a single column and like other pages - The post detail moves under the image and the Popular Items moves to the top of the page as a list of 3.
+If the width of the screen is less than 768px, this change the layout of the page. The page turns into a single column - The posts details moves underneath the image. After the width reduces less than 992px, the popular items section will move under the search bar and it will change to a list of three.
 
 
 ## List item
@@ -346,7 +346,7 @@ Change password - A page is loaded for the user to fill a form to update their p
 ![profile](media/profile/password.JPG)
 
 ### Reponsiveness
-When the screen becomes less than 768px, the page turn into a single column with the popular posts moving to the top as a list of 3. The profile image moves to the top of the profile name and number of listings. Just like the other pages, the post details move under the posts images.
+When the screen width becomes less than 992px, the page turn into a single column with the popular posts moving to the top as a list of 3. The profile image moves to the top of the profile name and number of listings. Just like the other pages, the post details move under the posts images.
 
 
 ## Defensive Design
@@ -407,7 +407,6 @@ The features below were tested as a logged out user.
 * Testing – Scroll past 10 posts and view if additional posts are rendered or if the page paginates.
 * Result – The feature is working as expected, the continues to render and is not paginated until the first item listing post has been reached.
 
-
 ### Post details
 
 #### Post
@@ -430,7 +429,6 @@ The features below were tested as a logged out user.
 * Testing – Click on the icons and avatar of post owners.
 * Result – The profile image and avatars are working as expected, post owners are visible on each post and click on their name or avatar take users to their profile page.
 
-
 ### Profiles
 
 #### View profile details and listings
@@ -448,7 +446,6 @@ The features below were tested as a logged out user.
 * Testing – Match the Popular items list to the homepage and click on items. 
 * Result – Popular items are working as expected, the list is the same as homepage. Click on the items takes users to their post detail pages.
 
-
 ## Sign-up 
 
 ### Sign up
@@ -461,7 +458,6 @@ The features below were tested as a logged out user.
 * Testing – Click the sign in page link
 * Result – Link is working, user is taken to the sign in page.
 
-
 ### Sign-in
 * Expected – The sign-in page renders with the signin form and image. The form cannot have a blank fields submitted, the username and password need to match an exister user credential. Successful sign-in logs the user in as the correct user and a refersh token is created.
 * Testing – Will attempt to sign in with invalid details, submit a blank form and then submit the form with valid details.
@@ -472,9 +468,9 @@ The features below were tested as a logged out user.
 * Testing – Click the sign up page link
 * Result – Link is working, user is taken to the sign up page.
 
-## Navbar
-The following tests have been completed as a logged in user.
+## The following tests have been completed as a logged in user
 
+## Navbar
 * Expected – After signing in, the navbar links change for logged-in users. The navbar to change to Home, List Item, Liked, Sign out and Profile with image and profile name.
 * Testing – Sign in and view the nav bar.
 * Result – The navbar changes as expected.
@@ -488,7 +484,6 @@ The following tests have been completed as a logged in user.
 * Expected – The homepage renders the same as a logged out user, the search and popular items functions work the same. The logged in user can like items on the listings. When posts are liked the heart icon changes colour and counter changes. A logged in user is unable to like their own posts
 * Testing – View homepage and like posts.
 * Result – Working as expected, the homepage renders the same and the search and popular items functions work the same. The icon changes colour and counter changes when a user likes and un-likes a post and a logged in user is unable to like their own posts.
-
 
 ## List item
 * Expected – The list item link takes users to the Create a listing page which has an Image field and create listing form. The form does not submit if the field requirements are not met. Spamming post will not create duplicate posts.
@@ -517,34 +512,44 @@ If the price field is blank the default value is 0.00, the default value for cat
 * Testing – Create more than 10 comments underneath a post.
 * Result – Comments continue to load and render after a list of 10.
 
-
 ## Post edit
-auto populate fields, behaviour same as post create form
-updates lisitng details
+* Expected – A user can edit their own listing item by click the edit on post detail. The use gets directed to the edit listing page with the form filled in with existing details. The form has the same requirements as the post create form and on submission updates the post.
+* Testing – Attempt to update a post created by logged in user. Attempt invalid details, successfully post a valid form and and view updated post.
+* Result – The edit feature works as expected. The form fields are pre-populated with current listing information, the fields have the same requirements and error messages as Create a Listing form and the post updates with new details.
 
 ## Liked Page
-Only filters posts like by the user
-0 liked message
+* Expected – The page populates with posts liked by the user. If there are 0 liked posts, there is a message advising the user to like posts.
+* Testing – Like posts and visit the Liked page. View Liked page with 0 like page.
+* Result – Liked page functioning as expected, page filters only on posts liked by the user. If there are not liked posts, user is advised no results were found and to like posts for results to appear. When posts are unliked on the Liked page, after refresh the page will update correctly.
 
 ## Profile page
-Profile image name and name, number of listings
-lists posts created by user.
-Edit
-- Edit profile
-    - change profile image and update
-- Edit username
-    - Unique username and update
-- Change password
-    - password requirements
-    - update
+* Expected – Profile pages render the same as a logged out user for all profiles. User owned profiles have a dropdown to allow users to edit their profile picture, username and password.
+* Testing – Visit other users profiles and the user owned profile page. 
+* Result – Feature is working as expected. Profile pages render correct, users can edit their profiles as their is drop down with options edit profile, username and password.
 
+### Edit profile
+* Expected – When edit profile is clicked, the user is taken to the edit profile page. Users can change their profile picture, if saved the profile picture updates and if canceled, the user is taken back to the previous page.
+* Testing – Visit the edit profile page by clicking the edit profile option on the dropdown. Choose a new profile image and update.
+* Result – Test passed as expected.
 
+### Edit username
+* Expected – When change username is clicked from the profile dropdown, the user is taken to the Change username page. Users can change their username, the requirement is it has to be unique. If saved, the username is updated and if canceled, the user is taken back to the previous page.
+* Testing – Visit the Change username page from the user owned profile by clicking the change username option on the dropdown. Try submitting an existing username and try a valid username. Attempt login with new username.
+* Result – Test passed as expected, login with new username was successful.
 
+### Change password
+* Expected – When change password is clicked from the profile dropdown, the user is taken to the Change password page. Users can change their password, the password requirement is the same as the sign up. If saved, the password is updated and if canceled, the user is taken back to the previous page.
+* Testing – Visit the Change password page from the user owned profile by clicking the change password option on the dropdown. Try submitting invalid passwords and try a password. Attempt login with new password.
+* Result – Test passed as expected, login with new password was successful.
 
-
-## responsiveness
+## Responsiveness
 - Layout on all screens
 - list screen sizes
+
+* Expected – The site has been tested on different screen sizes - 1440px, 1024px, 768px, 425px, 320px. The screen layout changes into single column after 768px, stacking forms and post details underneath post image in home and profile page information as shown in features. The popular items section condenses to a list of 3 at the top when width is less than 992px and Navbar condenses to a burger menu if width is less that 768px.
+* Testing – Test pages on the different screen sizes
+* Result – Navbar does not looked good after screensizes less 992px if the username is long.
+* Fix - Turn the Navbar into a burger menu if screensize less than 992px.
 
 ## Toasts
 - notification when 
