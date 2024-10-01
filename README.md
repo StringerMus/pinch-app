@@ -552,21 +552,47 @@ If the price field is blank the default value is 0.00, the default value for cat
 * Fix - Turn the Navbar into a burger menu if screensize less than 992px.
 
 ## Toasts
-- notification when 
+* Expected – Users receive notifications to confirm successful action at the bottom of the page when they complete the following actions;
     - logged in, log out, sign up, 
     - post create, post edit, post delete, 
     - comment edit, comment delete.
     - Profile image, username, password
+* Testing – Trigger notification by completing the actions.
+* Result – Notifications appear as expected.
 
 ## Redirect
-- cannot access unauthorised pages/ links
-- redirect to home page
+* Expected – A user is unable to gain access to pages they do not have authorisation for, users are redirected to the homepage.
+* Testing – Attempt to acces pages user do not have access to but typing urls to gain access non logged in users 
+* Result – Feature is working as expected. If a logged out uses '/liked' in the url they are able to access the page but this only provides the user with a list of all item listings where they are still unable to make any changes.
 
 ## 404page
-- invalid urls
+* Expected – If a user types in an invalid url, they are shown a custom 404 page.
+* Testing – Type an invalid url for the website.
+* Result – 404 page comes up as expected.
 
+## Bugs and fixes
+* Bug - Tokens not registering in browser causing the page to go blank after signin
+* Fix - Amend token code in utils.js. New version of dj_rest_auth was being used, naming convention was slightly different - this has been corrected.
 
+* Bug - If Profile page is refreshed, another users details profile name and image is shown. 
+* Fix - Unused code for a Following feature in ProfileDataContext was causing this - removed unused code. 
 
+* Bug - Avatar icon not appearing on navbar.
+* Fix - New version of dj_rest_auth was being used, needed to put USER_DETAILS_SERIALIZER under REST_AUTH.
+
+* Bug - If the items on the API gets pushed to the second page, the Popular Items function will not pick up the item details and list would not be correct.
+* Fix - Added logic to loop through all pages of posts in API to collect all data from posts.
+
+* Bug - If submission forms are double clicked when creating a new item listing, comment or signing up - duplicates would be created.
+* Fix - Disable submit button after submission, but if there is an error then submit is enabled.
+
+## Validators
+
+### HTML
+
+### CSS
+
+## JS
 
 ## Components
 Asset
@@ -578,6 +604,7 @@ NotFound
 
 
 
+
 # Future Enhancements
 * Saved items - Give users the ability save items they are interested in so it can recorded as a list to refer back when needed, at the moment users can use the liked page to be able to access items they are interested in to refer back to.
 
@@ -585,7 +612,11 @@ NotFound
 
 * A calendar - This can show interested users the days the item is available to rent to ensure items aren't being requested whilst they are unavailable.
 
-# Technologies
+
+
+# Deployment
+
+# Technologies used
 
 ## List of front-end libraries
 React Router:
