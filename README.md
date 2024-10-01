@@ -285,7 +285,7 @@ When the screen width becomes less than 768px, the page becomes a single column 
 ## List item
 This is the page where user can list an item on Pinch by filling out Create listing form.
 
-* An image will need to be uploaded, informing users the max file size is 2mb and max height and width is 4096px - but as the max file size 2mb, it is unlikey images dimensions would exceed this.
+* An image will need to be uploaded, informing users the max file size is 2mb and max height and width is 4096px - the form will not submit and notify if these conditions are not met.
 
 ### Form
 There are fields the form requires for a user to be able to successfully list an item
@@ -360,6 +360,135 @@ If an invalid url is input, a custom 404 page will appear for the user encouragi
 ![profile](media/home/404.JPG)
 
 
+
+
+# Testing
+
+## Not logged in
+
+### Navbar
+
+### Home
+Search bar
+ - no results, only itemname, category, username, location
+Item listing
+Infinite scroll
+Like
+Comment
+popular items
+Profile
+
+### Post details
+View post details
+Unable to like
+Popular items
+Profiles
+
+### Profiles
+view profile details and item listings
+click item lisitngs
+click popular items
+
+
+### Sign-in
+Sign up form and image
+No blank form
+invalid data
+link to sign up page
+refreshtoken
+Sign in with credentials
+
+## Sign-up 
+Sign in form and image
+No blank form
+invalid data - password/ unique name
+link to sign in page
+double sumbit
+
+
+## Navbar
+Nav links change
+- list item, liked, sign out, profile page
+signout to logout
+
+## Home
+post page to behave as logged out
+like items
+unable to like own items
+
+## List item
+Image field
+Required
+- item name, location, contact email and image
+Item name: Ensure this field has no more than 255 characters.
+price
+- No values less than 0 or more than 2 decimals
+- default value is 0 if empty
+Default category other if not selected
+Test all categories
+invalid messages
+double click post
+cancel
+post
+
+## Post detail
+post detail same as logged out user
+like
+comment
+- post and edit, infinite scroll
+post owner edit or delete
+
+## Post edit
+auto populate fields, behaviour same as post create form
+updates lisitng details
+
+## Liked Page
+Only filters posts like by the user
+0 liked message
+
+## Profile page
+Profile image name and name, number of listings
+lists posts created by user.
+Edit
+- Edit profile
+    - change profile image and update
+- Edit username
+    - Unique username and update
+- Change password
+    - password requirements
+    - update
+
+## responsiveness
+- Layout on all screens
+- list screen sizes
+
+## Toasts
+- notification when 
+    - logged in, log out, sign up, 
+    - post create, post edit, post delete, 
+    - comment edit, comment delete.
+    - Profile image, username, password
+
+## Redirect
+- cannot access unauthorised pages/ links
+- redirect to home page
+
+## 404page
+- invalid urls
+
+
+
+
+## Components
+Asset
+Avatar
+MoreDropdown
+Navbar
+NotFound
+
+
+
+
 # Future Enhancements
 * Saved items - Give users the ability save items they are interested in so it can recorded as a list to refer back when needed, at the moment users can use the liked page to be able to access items they are interested in to refer back to.
 
@@ -367,5 +496,8 @@ If an invalid url is input, a custom 404 page will appear for the user encouragi
 
 * A calendar - This can show interested users the days the item is available to rent to ensure items aren't being requested whilst they are unavailable.
 
+# Technologies
 
-# Testing
+## List of front-end libraries
+React Router:
+React Bootstrap: 
