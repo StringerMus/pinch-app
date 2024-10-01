@@ -11,7 +11,7 @@ export const NotificationProvider = ({ children }) => {
     setNotification(message);
     setTimeout(() => {
       setNotification(null);
-    }, 7000);
+    }, 5000);
   };
 
   return (
@@ -20,9 +20,9 @@ export const NotificationProvider = ({ children }) => {
       {notification && (
         <div style={{
             position: "fixed",
-            bottom: 10, // Adjusts the distance from the top
-            left: "50%", // Positions it at the horizontal center
-            transform: "translateX(-50%)", // Centers it horizontally
+            bottom: 10,
+            left: "50%",
+            transform: "translateX(-50%)",
             backgroundColor: "green",
             color: "white",
             padding: "10px",

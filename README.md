@@ -409,64 +409,114 @@ The features below were tested as a logged out user.
 
 
 ### Post details
-View post details
-Unable to like
-Popular items
-Profiles
+
+#### Post
+* Expected – After clicking on a post from the homepage, the user should be taken to the post’s detail page containing the same details, number of likes and comments, if there are comments users can view them below the item’s details. Also view the popular items list on the right side.
+* Testing – Click on posts on the homepage and review the details populated on the posts detail page.
+* Result – The feature is working as expected. The page renders correctly with the post’s details, number of likes, number of comments render if there are any and if there aren’t any comments it prompts a signed-out user to sign up to leave a comment. The popular items list also renders correctly.
+
+#### Unable to like
+* Expected – Just like on the home page, a non-registered user should not be able to like items and a overlay message should appear advising users to login to like a listing.
+* Testing – Click the heart icon as a logged-out user to attempt to like items.
+* Result – Like function working as expected, unable to like posts and overlay message appearing advising to log in.
+
+#### Popular Items
+* Expected – List should match the home page and when clicked on an item, the user is directed to the posts detail page.
+* Testing – Match the Popular items list to the homepage and click on items. 
+* Result – Popular items are working as expected, the list is the same as homepage. Click on the items takes users to their post detail pages.
+
+#### Profile
+* Expected – Same the homepage, the item owners name and avatar should appear on the posts and when clicked, users are taken to their profile pages.
+* Testing – Click on the icons and avatar of post owners.
+* Result – The profile image and avatars are working as expected, post owners are visible on each post and click on their name or avatar take users to their profile page.
+
 
 ### Profiles
-view profile details and item listings
-click item lisitngs
-click popular items
+
+#### View profile details and listings
+* Expected – Logged-out users can view profiles of item owners to view profile details and item listings by the owners.
+* Testing – Click on the profiles of item owners and view the page.
+* Result – Working as expected, when an item owner's profile is clicked the user can view the item owner’s name, profile image and number of listings. Below the profile details, the list of items listed by the profile owner appears. Also the infinite scroll feature is working, if there are more than posts, the page does not paginate but loads more posts.
+
+#### Item lisitng
+* Expected – The items listings should all belong to the profile owner. After clicking on a post from the homepage, the user should be taken to the post’s detail page
+* Testing – Review the owner of item listings on profile pages. Click on item listings.
+* Result – Functioning as expected, all items below to the profile owner. When clicked the post detail page renders correctly.
+
+#### Popular Items
+* Expected – Like post details, the list should match the home page and when clicked on an item, the user is directed to the posts detail page.
+* Testing – Match the Popular items list to the homepage and click on items. 
+* Result – Popular items are working as expected, the list is the same as homepage. Click on the items takes users to their post detail pages.
+
+
+## Sign-up 
+
+### Sign up
+* Expected – The sign-up page renders with the signup form and image. The form cannot have a blank field submitted, password criteria need to be met and username has to be unique for successful submission. Successful sign-up should create a new user and sign the user in automatically. Spamming the submit button after submitting the 1st time should not work.
+* Testing – Will attempt to sign up with invalid details, submit a blank form, submit with invalid username and password requirements and submit the form with valid details and spam submit.
+* Result – Working as expected, invalid details are not accepted and error feedback is given. Spamming submit does not do anything, a new account is created, the new user is signed in automatically and a refresh token is created.
+
+### Sign in link
+* Expected – The link to the signin page will take the user to the sign in page.
+* Testing – Click the sign in page link
+* Result – Link is working, user is taken to the sign in page.
 
 
 ### Sign-in
-Sign up form and image
-No blank form
-invalid data
-link to sign up page
-refreshtoken
-Sign in with credentials
+* Expected – The sign-in page renders with the signin form and image. The form cannot have a blank fields submitted, the username and password need to match an exister user credential. Successful sign-in logs the user in as the correct user and a refersh token is created.
+* Testing – Will attempt to sign in with invalid details, submit a blank form and then submit the form with valid details.
+* Result – Working as expected, invalid details are not accepted and error feedback is given. The user is signed in and a refresh token is created.
 
-## Sign-up 
-Sign in form and image
-No blank form
-invalid data - password/ unique name
-link to sign in page
-double sumbit
-
+### Sign up link
+* Expected – The link to the signup page will take the user to the sign in page.
+* Testing – Click the sign up page link
+* Result – Link is working, user is taken to the sign up page.
 
 ## Navbar
-Nav links change
-- list item, liked, sign out, profile page
-signout to logout
+The following tests have been completed as a logged in user.
+
+* Expected – After signing in, the navbar links change for logged-in users. The navbar to change to Home, List Item, Liked, Sign out and Profile with image and profile name.
+* Testing – Sign in and view the nav bar.
+* Result – The navbar changes as expected.
+
+### Sign out
+* Expected – If the sign out link is clicked, the user is signed out.
+* Testing – Click sign out as a logged in user.
+* Result – The user successfully signs out.
 
 ## Home
-post page to behave as logged out
-like items
-unable to like own items
+* Expected – The homepage renders the same as a logged out user, the search and popular items functions work the same. The logged in user can like items on the listings. When posts are liked the heart icon changes colour and counter changes. A logged in user is unable to like their own posts
+* Testing – View homepage and like posts.
+* Result – Working as expected, the homepage renders the same and the search and popular items functions work the same. The icon changes colour and counter changes when a user likes and un-likes a post and a logged in user is unable to like their own posts.
+
 
 ## List item
-Image field
-Required
-- item name, location, contact email and image
-Item name: Ensure this field has no more than 255 characters.
-price
-- No values less than 0 or more than 2 decimals
-- default value is 0 if empty
-Default category other if not selected
-Test all categories
-invalid messages
-double click post
-cancel
-post
+* Expected – The list item link takes users to the Create a listing page which has an Image field and create listing form. The form does not submit if the field requirements are not met. Spamming post will not create duplicate posts.
+* Testing – Visit the Create a Listing form and attempt to submit the form with invalid information in the fields. Submit a form to view a successful submission.
+* Result – Form working as expected. The form does not submit with invalid data, the item name, location, contact email and image field is required. Contact email has to be an email, price field cannot be a figure less than 0 and more than 2 decimal places. The image cannot be more 2mb and more than 4096px in width and height - users will be notified of errors.
+If the price field is blank the default value is 0.00, the default value for category will be other and the description will be blank if not filled.
+<br/>Hitting cancel will take the user back to the previous page they were on. Spamming post will not create duplicate posts and after submission, the item listing is created successfully. The user is directed to the post details page and the item also appears on the home page.
 
 ## Post detail
-post detail same as logged out user
-like
-comment
-- post and edit, infinite scroll
-post owner edit or delete
+* Expected – The post detail page renders the same as a logged-out user. Logged-in users can leave comments and like posts. Owners of the post cannot like the post and will have a drop-down available for edit and delete functions.
+* Testing – Visit a post and owned by a user and a post not owned by a user. Click on the drop-down on a user-owned post.
+* Result – Post detail for a logged-in user working as expected. Page renders the same as a logged-out user but can like a post and a comment for is available. If a post is liked or un-liked, the like counter changes. Post owners have a drop-down available to either edit or delete a post.
+
+### Delete post
+* Expected – Users can only delete their own posts.
+* Testing – Click the delete icon on the post drop on a post owned by the user to delete post. Visit a post owned by a another user to view dropdown.
+* Result – Delete is working as expected, user can only delete their post and cannot delete a post owned by another user.
+
+## Comments
+* Expected – Logged in users can fill out the comment form and post a comment. Spamming post will not create a duplicate post. There is a dropdown available for comments owned by a user, they can be edited and deleted by a user.
+* Testing – Comment on a post, edit and delete the comment.
+* Result – Featured worked as expected. Comment created under a post, comment counters change depending on the number of comments. Users can only edit and they own comments, user owned comments can be edited and updated, there is a cancel button for users to cancel an edit. User can also delete their comments.
+
+### Infinite scroll
+* Expected – If the number of comments exceeds 10, the comments dont paginated by render the remaning comments until the end is reached.
+* Testing – Create more than 10 comments underneath a post.
+* Result – Comments continue to load and render after a list of 10.
+
 
 ## Post edit
 auto populate fields, behaviour same as post create form
@@ -487,6 +537,10 @@ Edit
 - Change password
     - password requirements
     - update
+
+
+
+
 
 ## responsiveness
 - Layout on all screens
