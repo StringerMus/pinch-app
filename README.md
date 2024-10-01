@@ -360,23 +360,53 @@ If an invalid url is input, a custom 404 page will appear for the user encouragi
 ![profile](media/home/404.JPG)
 
 
-
-
 # Testing
 
 ## Not logged in
+The features below were tested as a logged out user.
 
 ### Navbar
+* Expected – The navbar to contain the logo on the left side and on the right side ‘home’, ‘sign-in’ and ‘sign-up’ icons. When hovered over the icons, they change color and the links change colour depending on the page users are visiting.
+* Testing – Visit the site as a logged-out user and click the links to ensure they are working as intended.
+* Result – Links work as expected. The logo, ‘home’, ‘sign-in’ and ‘sign-up’ icon links appear and take the user to the correct pages as expected. The icons change colour when hovered over and depending on the page a user is visiting.
 
 ### Home
-Search bar
- - no results, only itemname, category, username, location
-Item listing
-Infinite scroll
-Like
-Comment
-popular items
-Profile
+
+#### Homepage
+* Expected – The homepage contains the intro and step-by-step instructions, with the search bar underneath and listing all posts ordered by most recent posts. The home page also includes a list of 5 popular items on the right side of the page.
+* Testing – Visit the homepage and view what the page renders.
+* Result – The page is loading as expected, with all the elements loaded and can scroll through a list of all items viewing the item image and details.
+
+#### Search bar
+* Expected – The search bar is present and is able to filter listed items that contain the value of their search in their name, category, username and location. If no items are found, this is notified to the user.
+* Testing – Use the search bar to search for items, view what no-matched results look like, create posts that have the same names as existing posts and place them in different fields to see the outcome.
+* Result – The search bar is working as expected. Posts are being filtered that match the searched word if it is contained when with the item, category, owner name and location. No matched results tells users no results were found and to try a different search.
+
+#### Like
+* Expected – A non-registered user should not be able to like items and a overlay message should appear advising users to login to like a listing.
+* Testing – Click the heart icon as a logged-out user to attempt to like items.
+* Result – Like function working as expected, unable to like posts and overlay message appearing advising to log in.
+
+#### Comment
+* Expected – The comment icon changes colour when hovered over and when clicked, it will take the user the posts details page.
+* Testing – Hover over comment icon on and posts and click the icon.
+* Result – When hovered over the icon changes colour and when clicked, the user is directed to the posts details page.
+
+#### Popular Items
+* Expected – The popular items list appears next to all post listing of the top 5 most liked items and when clicked, the user is directed to the posts detail page.
+* Testing – Review like counts on posts to view if items are ordered by the number of likes and click on items. 
+* Result – Popular items are working as expected, the posts are listed by the number of likes – if posts have the same number of likes these are ordered by the most recent post. Click on the items takes users to their post detail pages.
+
+### Profile
+* Expected – The name and avatars of owners of posts appears on the posts and when clicked, users are taken to their profile pages.
+* Testing – Click on the icons and avatar of post owners.
+* Result – The profile image and avatars are working as expected, post owners are visible on each post and click on their name or avatar take users to their profile page.
+
+#### Infinite Scroll
+* Expected – When the list of posts exceeds 10, the page does not paginate but the list continues as additional posts are rendered until the end of the list is reached.
+* Testing – Scroll past 10 posts and view if additional posts are rendered or if the page paginates.
+* Result – The feature is working as expected, the continues to render and is not paginated until the first item listing post has been reached.
+
 
 ### Post details
 View post details

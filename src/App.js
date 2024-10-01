@@ -8,7 +8,6 @@ import SignInForm from './pages/auth/SignInForm';
 import PostCreateForm from './pages/posts/PostCreateForm';
 import PostPage from './pages/posts/PostPage';
 import PostsPage from './pages/posts/PostsPage';
-//import { useCurrentUser } from './contexts/CurrentUserContext';
 import PostEditForm from './pages/posts/PostEditForm';
 import ProfilePage from './pages/profiles/ProfilePage';
 import UsernameForm from "./pages/profiles/UsernameForm";
@@ -17,8 +16,6 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import NotFound from "./components/NotFound";
 
 function App() {
-  //const currentUser = useCurrentUser();
-  //const profile_id = currentUser?.profile_id || "";
 
   return (
         <div className={styles.App}>
@@ -34,7 +31,7 @@ function App() {
                 path="/liked"
                 render={() => (
                   <PostsPage
-                    message="No results found. Adjust the search keyword or like a post."
+                    message="No results found, like a post for results to appear."
                     filter={`liked=true`}
                     likedPage={true}
                   />
