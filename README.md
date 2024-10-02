@@ -624,6 +624,29 @@ No errors detected.
 
 
 # Deployment
+The deployment activity was taken early on in development on the React Js app. To prepare the App for deployment, the following steps were taken;
+
+### Create a repository
+* Create an empty respository in GitHub for the project.
+* Open up the workspace in GitPod
+
+### GitPod
+* In terminal install 'npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm'.
+* Git commit and push to repository.
+
+### Heroku
+* Create new app with unique name and appropriate region.
+* Connect heroku app to GitHub repository via the deployment tab, search for repository and connect.
+
+### Connect to API
+In the API's heroku within settings, Config Vars, ensure the following values are present;
+* ALLOWED_HOST: <The heroku deployed Pinch API>
+* CLIENT_ORIGIN: <The heroku deployed Pinch APP>
+* CLIENT_ORIGIN_DEV: <The development IDE Pinch APP>
+* In IDE install Axios. Create api folder and inside create the axiosDefaults.js.
+* Ensure the file has axios.defaults.baseURL with the value of the deployed API and also axios.defaults headers.post and withCredentials.
+* In App.js, import axiosDefaults.js.
+* Ensure there is a Procfile with web: serve -s build.
 
 # Technologies used
 
