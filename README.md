@@ -648,8 +648,45 @@ In the API's heroku within settings, Config Vars, ensure the following values ar
 * In App.js, import axiosDefaults.js.
 * Ensure there is a Procfile with web: serve -s build.
 
-# Technologies used
+### Deploy
+* Ensure all commits are pushed to repository.
+* Deploy branch in App Heroku.
 
-## List of front-end libraries
-React Router:
-React Bootstrap: 
+# Technologies used
+* Balsamiq - Used to create wireframes
+* React Router - It provides components and hooks to handle navigation
+* JWT-Decode - Provides a simple way to decode JWTs
+* Axios - Helps connect to the API to handle http requests in JS
+* React - Build the user interface of the app
+* lucid.app - Create database model
+* Heroku - Deploy website
+* Cloudinary - Image database
+* GitHub - Repository for the website and project board for User Stories.
+* GitPod - IDE used to create API
+* Chrome Dev Tools - Help develop and debug the app
+* JavaScript - Coding language used to develop app
+
+### Media
+* Adobe - Colour psycology reasearch 
+* Photos sourced - Pexels and Unsplash
+* Am I Responsive - Mockup of app on different devices
+* Font Awesome - Provide icons
+* GoogleFonts - Provided fonts, icons and logo
+
+### Credit
+* Notification coding help - https://dev.to/doylecodes/making-alerts-for-a-web-app-41d6
+* CI Moments walkthrough
+
+### Troubleshooting
+* [ChatGPT](https://openai.com/index/chatgpt/)
+* [Slack Code Institute Community](https://app.slack.com/client/T0L30B202/C026PTF46F5)
+* [Stackoverflow](https://stackoverflow.com/)
+* CI Tutor Support
+
+### Honorable mentions
+* I would like to give my mentor Richards Wells a big thanks with all the time given to help make the project better with feedback, inspiration and helpful solutions to my problems.
+* Thanks to the Slack Community as the members who have been kind enough to help provide solutions to my queries.
+* Thanks to Code Institute Tutors who were able to provide quick solutions to the bugs I was facing while in development.
+
+
+[Link to API repository](https://github.com/StringerMus/pinch-api/tree/main)
