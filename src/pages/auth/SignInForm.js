@@ -30,7 +30,6 @@ function SignInForm() {
   });
   const { username, password } = signInData;
   const [errors, setErrors] = useState({});
-  const [errorDetails, setErrorDetails] = useState(null); // State for detailed error info
   const showNotification = useNotification();
 
   const history = useHistory();
@@ -39,14 +38,12 @@ function SignInForm() {
 
     try {
       const {data} = await axios.post("/dj-rest-auth/login/", signInData);
-      setCurrentUser(data.user);
+      setCurrentUser(data.user); //Update the user state
       setTokenTimestamp(data);
-      history.goBack();
+      history.push('/')//history.goBack();
       showNotification("Signed in successfully!");
     } catch (err) {
       setErrors(err.response?.data);
-      // Capture detailed error information for debugging
-      setErrorDetails(err.response || err.message || "Unknown error");
     }
   };
 
