@@ -43,7 +43,9 @@ function SignInForm() {
       history.goBack();
       showNotification("Signed in successfully!");
     } catch (err) {
-        setErrors(err.response?.data);
+      setErrors(err.response?.data);
+      // Capture detailed error information for debugging
+      setErrorDetails(err.response || err.message || "Unknown error");
     }
   };
 
