@@ -30,6 +30,7 @@ function SignInForm() {
   });
   const { username, password } = signInData;
   const [errors, setErrors] = useState({});
+  const [errorDetails, setErrorDetails] = useState(null); // State for detailed error info
   const showNotification = useNotification();
 
   const history = useHistory();
