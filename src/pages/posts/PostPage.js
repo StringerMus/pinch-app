@@ -43,6 +43,7 @@ function PostPage() {
         handleMount();
     }, [id]);
 
+  //Page for each posts
   return (
     <Row className="h-100">
       {/* Col to space left side of the page*/}
@@ -52,7 +53,7 @@ function PostPage() {
         <Post {...post.results[0]} setPosts={setPost} postPage/>
         <Container className={appStyles.Content}>
         {currentUser ? (
-          <CommentCreateForm
+        <CommentCreateForm
           profile_id={currentUser.profile_id}
           profileImage={profile_image}
           post={id}

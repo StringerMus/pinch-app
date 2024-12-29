@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
@@ -15,6 +15,8 @@ import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from 'react-router-dom/';
 import { useNotification } from "../../contexts/NotificationContext";
+
+import Email from "./Email";
 
 const Post = (props) => {
     const {
@@ -41,6 +43,8 @@ const Post = (props) => {
     const is_owner = currentUser?.username === owner;
     const history = useHistory();
     const showNotification = useNotification();
+
+    const [showEmailForm, setShowEmailForm] = useState(false);
 
     const handleEdit = () => {
         history.push(`/listings/${id}/edit`);
@@ -85,7 +89,8 @@ const Post = (props) => {
         }
       };
 
-  return (
+    // Post Details
+    return (
         <Card className={styles.Post}>
             <Row>
                 <Col md={6} xs={12}>
@@ -129,7 +134,26 @@ const Post = (props) => {
                         {price && <Card.Title className={styles.Post_sub}>£{price} per day</Card.Title>}
                         {location && <Card.Title className={styles.Post_text}>Location: {location}</Card.Title>}
                         {description && <Card.Title className={styles.Post_text}>{description}</Card.Title>}
-                        {contact_email && <Card.Title className={styles.Post_text}>Contact email: {contact_email}</Card.Title>}
+                        {/* Email component */}
+                        {/* Ensures contact_email exists before rendering Email component  */}
+                        {contact_email && (
+                            <>
+                                <Card.Title className={styles.Post_text}>
+                                    Contact email: {contact_email}
+                                </Card.Title>
+                                {/* Toggles the state between true and false whenever it is clicked. */}
+                                <button
+                                    onClick={() => setShowEmailForm((prev) => !prev)}
+                                    className="btn btn-primary"
+                                >
+                                    {showEmailForm ? "Close Email Form" : "Contact Owner"}
+                                </button>
+                                {showEmailForm && (
+                                    <Email listingId={id} ownerEmail={contact_email} itemName={item_name} />
+                                )}
+                            </>
+                        )}
+                        
                         <Media className="align-items-center" >
                             <Link className={styles.Profile} to={`/profiles/${profile_id}`}>
                                 <Avatar src={profile_image} height={45} />

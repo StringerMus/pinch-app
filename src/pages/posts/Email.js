@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Modal from "react-modal"; // Install using `npm install react-modal`
+import Modal from "react-modal";
 import axios from "axios";
+import { useCurrentUser } from "../../contexts/CurrentUserContext"; // Import context for current user
 
-// Modal styles (customize as needed)
+// Modal styles
 const modalStyles = {
   content: {
     width: "400px",
@@ -14,23 +15,30 @@ const modalStyles = {
 
 Modal.setAppElement("#root"); // To avoid accessibility warnings
 
-const Email = ({ itemId, ownerEmail }) => { /* Needs changing? */
-  const [modalIsOpen, setModalIsOpen] = useState(false); /* What does this mean? */
+const Email = ({ listingId, ownerEmail, itemName }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false); /* A boolean that toggles between true and false to open and close the modal. */
+  const currentUser = useCurrentUser(); // Access current user's data
+
   const [formData, setFormData] = useState({
-    name: "", //autofill with username of requestor
-    email: "", //to - autofill with item owners email
-    subject: "", //need a placeholder subject
-    message: "", // needs placeholder message
+    name: currentUser?.username || "", // Autofill with username
+    email: currentUser?.email || "",
+    subject: itemName
+      ? `Inquiry about "${itemName}"`
+      : "Inquiry about your listing", // Dynamic placeholder subject
+    message: "Hi, I am interested in your listing. Is this item available and what is the cost?", // Placeholder message
   });
 
   const [loading, setLoading] = useState(false);
 
   //The modal is opened and closed by toggling the modalIsOpen state.
-  // Open the modal
   const openModal = () => setModalIsOpen(true);
-
-  // Close the modal
   const closeModal = () => setModalIsOpen(false);
+
+  // Ensure required props are provided
+  if (!ownerEmail || !listingId) {
+    console.error("Missing required props: ownerEmail or listingId.");
+    return null;
+  }
 
   // Handle form input changes
   const handleChange = (event) => {
@@ -49,7 +57,7 @@ const Email = ({ itemId, ownerEmail }) => { /* Needs changing? */
       const response = await axios.post("/api/send-email/", {
         ...formData,
         to_email: ownerEmail, // Email of the item owner
-        item_id: itemId, // ID of the item
+        listing_id: listingId, // ID of the item
       });
 
       alert(response.data.success || "Email sent successfully!");
@@ -69,7 +77,12 @@ const Email = ({ itemId, ownerEmail }) => { /* Needs changing? */
       </button>
 
       {/* Email Modal */}
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={modalStyles}>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={modalStyles}
+        contentLabel="Send Email Modal"
+      >
         <h2>Send a Query</h2>
         <form onSubmit={handleSubmit}>
           <div>
@@ -99,6 +112,7 @@ const Email = ({ itemId, ownerEmail }) => { /* Needs changing? */
               name="subject"
               value={formData.subject}
               onChange={handleChange}
+              placeholder="Enter a subject for your query"
               required
             />
           </div>
@@ -109,12 +123,13 @@ const Email = ({ itemId, ownerEmail }) => { /* Needs changing? */
               value={formData.message}
               onChange={handleChange}
               rows="5"
+              placeholder="Write your message here..."
               required
             />
           </div>
           <div style={{ marginTop: "10px" }}>
             <button type="submit" disabled={loading}>
-              {loading ? "Sending..." : "Send Email"}
+              {loading ? <span className="spinner"></span> : "Send Email"}
             </button>
             <button type="button" onClick={closeModal} style={{ marginLeft: "10px" }}>
               Cancel

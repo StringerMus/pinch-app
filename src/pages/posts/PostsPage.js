@@ -50,6 +50,7 @@ function PostsPage({ message, filter = "" }) {
     };
   }, [filter, query, pathname, currentUser]); 
 
+  //Homepage
   return (
     <Row className="h-100">
       {/* Col to space left side of the page*/}
