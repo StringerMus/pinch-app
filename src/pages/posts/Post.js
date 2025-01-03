@@ -135,24 +135,11 @@ const Post = (props) => {
                         {location && <Card.Title className={styles.Post_text}>Location: {location}</Card.Title>}
                         {description && <Card.Title className={styles.Post_text}>{description}</Card.Title>}
                         {/* Email component */}
-                        {/* Ensures contact_email exists before rendering Email component  */}
+                        {/* Ensure contact_email exists before rendering Email component */}
                         {contact_email && (
-                            <>
-                                <Card.Title className={styles.Post_text}>
-                                    Contact email: {contact_email}
-                                </Card.Title>
-                                {/* Toggles the state between true and false whenever it is clicked. */}
-                                <button
-                                    onClick={() => setShowEmailForm((prev) => !prev)}
-                                    className="btn btn-primary"
-                                >
-                                    {showEmailForm ? "Close Email Form" : "Contact Owner"}
-                                </button>
-                                {showEmailForm && (
-                                    <Email listingId={id} ownerEmail={contact_email} itemName={item_name} />
-                                )}
-                            </>
+                            <Email listingId={id} ownerEmail={contact_email} itemName={item_name} />
                         )}
+
                         
                         <Media className="align-items-center" >
                             <Link className={styles.Profile} to={`/profiles/${profile_id}`}>

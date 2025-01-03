@@ -3,15 +3,23 @@ import Modal from "react-modal";
 import axios from "axios";
 import { useCurrentUser } from "../../contexts/CurrentUserContext"; // Import context for current user
 
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
+
 // Modal styles
-const modalStyles = {
-  content: {
-    width: "400px",
-    margin: "auto",
-    padding: "20px",
-    borderRadius: "10px",
-  },
-};
+// const modalStyles = {
+//   content: {
+//     width: "700px",
+//     margin: "auto",
+//     height: "auto",
+//     padding: "20px",
+//     borderRadius: "20px",
+//   },
+// };
 
 Modal.setAppElement("#root"); // To avoid accessibility warnings
 
@@ -23,8 +31,8 @@ const Email = ({ listingId, ownerEmail, itemName }) => {
     name: currentUser?.username || "", // Autofill with username
     email: currentUser?.email || "",
     subject: itemName
-      ? `Inquiry about "${itemName}"`
-      : "Inquiry about your listing", // Dynamic placeholder subject
+      ? `Enquiry about "${itemName}"`
+      : "Enquiry about your listing", // Placeholder subject
     message: "Hi, I am interested in your listing. Is this item available and what is the cost?", // Placeholder message
   });
 
@@ -71,71 +79,98 @@ const Email = ({ listingId, ownerEmail, itemName }) => {
 
   return (
     <div>
-      {/* Email Button */}
-      <button onClick={openModal} className="email-button">
-        Email Owner
-      </button>
-
-      {/* Email Modal */}
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={modalStyles}
-        contentLabel="Send Email Modal"
+      <Button
+        onClick={openModal}
+        className="btn btn-primary"
+        size="sm"
+        style={{ marginTop: "10px", marginBottom: "15px" }}
       >
-        <h2>Send a Query</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Subject:</label>
-            <input
-              type="text"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              placeholder="Enter a subject for your query"
-              required
-            />
-          </div>
-          <div>
-            <label>Message:</label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows="5"
-              placeholder="Write your message here..."
-              required
-            />
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <button type="submit" disabled={loading}>
-              {loading ? <span className="spinner"></span> : "Send Email"}
-            </button>
-            <button type="button" onClick={closeModal} style={{ marginLeft: "10px" }}>
-              Cancel
-            </button>
-          </div>
-        </form>
+        Contact Owner
+      </Button>
+
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Send Email Modal">
+        <Container>
+          <h2 className="text-center mb-4">Send a Query</h2>
+
+          <Form onSubmit={handleSubmit}>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label>
+                Name:
+              </Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label>
+                Email:
+              </Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label>
+                Subject:
+              </Form.Label>
+                <Form.Control
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Enter a subject for your query"
+                  required
+                />
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label>
+                Message:
+              </Form.Label>
+                <Form.Control
+                  as="textarea"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={5}
+                  placeholder="Write your message here..."
+                  required
+                />
+            </Form.Group>
+
+            <Row className="mt-4">
+              <Col className="text-center">
+                <Button
+                  type="submit"
+                  className="btn btn-primary me-2"
+                  disabled={loading}
+                  margin
+                >
+                  {loading ? <span className="spinner"></span> : "Send Email"}
+                </Button>
+                <Button
+                  type="button"
+                  className="btn btn-secondary m-2 mb-2"
+                  onClick={closeModal}
+                >
+                  Cancel
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </Container>
       </Modal>
     </div>
   );
