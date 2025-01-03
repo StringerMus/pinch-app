@@ -137,7 +137,14 @@ const Post = (props) => {
                         {/* Email component */}
                         {/* Ensure contact_email exists before rendering Email component */}
                         {contact_email && (
-                            <Email listingId={id} ownerEmail={contact_email} itemName={item_name} />
+                            <Email
+                            id={id} 
+                            contact_email={contact_email} 
+                            item_name={item_name} 
+                            owner={owner} 
+                            location={location} 
+                            price={price} 
+                          />
                         )}
 
                         

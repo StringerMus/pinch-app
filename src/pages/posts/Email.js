@@ -18,16 +18,29 @@ import { useNotification } from "../../contexts/NotificationContext";
 
 Modal.setAppElement("#root"); // To avoid accessibility warnings
 
-const Email = ({ listingId, ownerEmail, itemName, location, contact_email }) => {
+const Email = (props) => {
+  const {
+    id,
+    owner,
+    profile_id,
+    profile_image,
+    item_name,
+    description,
+    category,
+    price,
+    location,
+    contact_email,
+    updated_at,
+  } = props;
+
   const [modalIsOpen, setModalIsOpen] = useState(false); /* A boolean that toggles between true and false to open and close the modal. */
   const currentUser = useCurrentUser(); // Access current user's data
+  const is_owner = currentUser?.username === owner;
 
   const [formData, setFormData] = useState({
-    item: `${itemName}`,
-    location: `${location}`,
     name: currentUser?.username || "", // Autofill with username
     email: "",
-    subject: `Pinch - Enquiry about "${itemName}"`,
+    subject: `Pinch - Enquiry about "${item_name}"`,
     message: "Hi, I am interested in your listing. Is this item available?", // Placeholder message
   });
 
@@ -40,7 +53,7 @@ const Email = ({ listingId, ownerEmail, itemName, location, contact_email }) => 
   const closeModal = () => setModalIsOpen(false);
 
   // Ensure required props are provided
-  if (!ownerEmail || !listingId) {
+  if (!contact_email || !id) {
     console.error("Missing required props: ownerEmail or listingId.");
     return null;
   }
@@ -61,8 +74,8 @@ const Email = ({ listingId, ownerEmail, itemName, location, contact_email }) => 
     try {
       const response = await axios.post("/api/send-email/", {
         ...formData,
-        to_email: ownerEmail, // Email of the item owner
-        listing_id: listingId, // ID of the item
+        to_email: contact_email, // Email of the item owner
+        listing_id: id, // ID of the item
       });
 
       alert(response.data.success || "Email sent successfully!");
@@ -97,6 +110,16 @@ const Email = ({ listingId, ownerEmail, itemName, location, contact_email }) => 
             >
               <Form onSubmit={handleSubmit}>
                 <h2 className={`text-center mb-4 ${styles.Title}`}>Send a Query</h2>
+
+                {/* Item info */}
+                <Form.Group as={Row} className={`text-center mb-2 ${styles.Message}`}>
+                  <Col>
+                    <Form.Label className="fw-bold text-center">
+                      Enquiring to {owner} for {item_name} at £{price} per day
+                    </Form.Label>
+                  </Col>
+                </Form.Group>
+
               
                 <Form.Group as={Row} className="mb-3">
                   <Form.Label>
@@ -150,7 +173,7 @@ const Email = ({ listingId, ownerEmail, itemName, location, contact_email }) => 
                       value={formData.message}
                       onChange={handleChange}
                       rows={3}
-                      placeholder="Write your message here..."
+                      placeholder="Write your query here..."
                       required
                     />
                 </Form.Group>
@@ -159,7 +182,7 @@ const Email = ({ listingId, ownerEmail, itemName, location, contact_email }) => 
                   <Col className="text-center">
                     <Button
                       type="submit"
-                      className="btn btn-primary me-2"
+                      className={`${btnStyles.Button} ${btnStyles.Blue}`}
                       disabled={loading}
                       margin
                     >
@@ -167,7 +190,7 @@ const Email = ({ listingId, ownerEmail, itemName, location, contact_email }) => 
                     </Button>
                     <Button
                       type="button"
-                      className="btn btn-secondary m-2 mb-2"
+                      className={`${btnStyles.Button} ${btnStyles.Blue}`}
                       onClick={closeModal}
                     >
                       Cancel
