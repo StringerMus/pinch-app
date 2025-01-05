@@ -72,7 +72,7 @@ const Email = (props) => {
     setLoading(true);
 
     try {
-      const response = await axios.post("/api/send-email/", {
+      const response = await axios.post("/send-email/", {
         ...formData,
         to_email: contact_email, // Email of the item owner
         listing_id: id, // ID of the item
