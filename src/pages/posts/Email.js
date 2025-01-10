@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import axios from "axios";
+import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext"; // Import context for current user
 
 import Button from "react-bootstrap/Button";
@@ -48,6 +48,8 @@ const Email = (props) => {
 
   const [loading, setLoading] = useState(false);
 
+  const API_URL = "https://pinch-api-f947cf5f7bdc.herokuapp.com"; // backend URL here
+
   //The modal is opened and closed by toggling the modalIsOpen state.
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
@@ -72,7 +74,7 @@ const Email = (props) => {
     setLoading(true);
 
     try {
-      const response = await axios.post("/send-email/", {
+      const response = await axiosReq.post("/send-email/", { //issue might be here
         ...formData,
         to_email: contact_email, // Email of the item owner
         listing_id: id, // ID of the item
