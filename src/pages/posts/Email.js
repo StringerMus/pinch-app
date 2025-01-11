@@ -74,18 +74,25 @@ const Email = (props) => {
     setLoading(true);
 
     try {
-      const response = await axiosReq.post("/send-email/", { //issue might be here
-        ...formData,
-        to_email: contact_email, // Email of the item owner
-        listing_id: id, // ID of the item
-      });
-
+      const response = await axios.post(
+        "https://pinch-api-f947cf5f7bdc.herokuapp.com/send-email/",
+        {
+          ...formData,
+          to_email: contact_email, // Email of the item owner
+          listing_id: id, // ID of the item
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       alert(response.data.success || "Email sent successfully!");
-      closeModal(); // Close modal on success
+      closeModal();
     } catch (error) {
-      alert(error.response?.data?.error || "Failed to send email. Please try again.");
+        alert(error.response?.data?.error || "Failed to send email. Please try again.");
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
   };
 
