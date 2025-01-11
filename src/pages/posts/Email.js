@@ -75,19 +75,12 @@ const Email = (props) => {
     setLoading(true);
 
     try {
-        const response = await axios.post(
-            "https://pinch-api-f947cf5f7bdc.herokuapp.com/send-email/",
-            {
-                ...formData,
-                to_email: contact_email, // Email of the item owner
-                listing_id: id, // ID of the item
-            },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        );
+      const response = await axiosReq.post("/send-email/", {
+        ...formData,
+        to_email: contact_email, // Email of the item owner
+        listing_id: id, // ID of the item
+      });
+
         alert(response.data.success || "Email sent successfully!");
         closeModal();
     } catch (error) {
