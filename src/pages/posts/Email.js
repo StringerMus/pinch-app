@@ -17,43 +17,44 @@ import btnStyles from "../../styles/Button.module.css";
 
 import { useNotification } from "../../contexts/NotificationContext";
 
-Modal.setAppElement("#root"); // To avoid accessibility warnings
+// To avoid accessibility warnings
+Modal.setAppElement("#root"); 
 
 const Email = (props) => {
   const {
     id,
     owner,
-    profile_id,
-    profile_image,
     item_name,
-    description,
-    category,
     price,
-    location,
     contact_email,
-    updated_at,
   } = props;
 
-  const [modalIsOpen, setModalIsOpen] = useState(false); /* A boolean that toggles between true and false to open and close the modal. */
-  const currentUser = useCurrentUser(); // Access current user's data
+  const currentUser = useCurrentUser();
+
   const is_owner = currentUser?.username === owner;
 
-  const [formData, setFormData] = useState({
-    name: currentUser?.username || "", // Autofill with username
+  const initialFormData = {
+    // Autofill with username
+    name: currentUser?.username || "",
     email: "",
     subject: `Pinch - Enquiry about "${item_name}"`,
-    message: "Hi, I am interested in your listing. Is this item available?", // Placeholder message
-  });
+    message: "Hi, I am interested in your listing. Is this item available?",
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+  /* A boolean that toggles between true and false to open and close the modal. */
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const showNotification = useNotification();
 
-  const [loading, setLoading] = useState(false);
-
-  const API_URL = "https://pinch-api-f947cf5f7bdc.herokuapp.com"; // backend URL here
-
   //The modal is opened and closed by toggling the modalIsOpen state.
+  // Reset form data when modal closes
   const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setFormData(initialFormData);
+  };
 
   // Ensure required props are provided
   if (!contact_email || !id) {
@@ -61,7 +62,6 @@ const Email = (props) => {
     return null;
   }
 
-  // Handle form input changes
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -69,7 +69,6 @@ const Email = (props) => {
     });
   };
 
-  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -77,8 +76,11 @@ const Email = (props) => {
     try {
       const response = await axiosReq.post("/send-email/", {
         ...formData,
-        to_email: contact_email, // Email of the item owner
-        listing_id: id, // ID of the item
+        to_email: contact_email,
+        listing_id: id,
+        owner: owner,
+        item_name: item_name,
+        price: price,
       });
 
         alert(response.data.success || "Email sent successfully!");
@@ -187,7 +189,6 @@ const Email = (props) => {
                       type="submit"
                       className={`${btnStyles.Button} ${btnStyles.Blue}`}
                       disabled={loading}
-                      margin
                     >
                       {loading ? <span className="spinner"></span> : "Send Email"}
                     </Button>
